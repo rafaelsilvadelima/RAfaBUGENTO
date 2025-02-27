@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!--ICONIFY-->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!--PLUGIN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+
+
+    <!--NAV-->
+    <nav class="flex">
+        <h1 class="medium logo">RA<em>fa</em>BUGENTO</h1>
+        <ul class="nav_links flex">
+            <li><a href="#" class="active"><b>Inicio</b>
+                <!-- <iconify-icon icon="material-symbols:home-outline"> -->
+                    <!-- </iconify-icon></a></li> -->
+            <li><a href="#"><b>Fale Comigo</b>
+                <!-- <iconify-icon icon="tdesign:call-1"></iconify-icon></a></li> -->
+            <li><a href="#"><b>Quem Sou Eu</b>
+                <!-- <iconify-icon icon="mdi:about-circle-outline"></iconify-icon></a></li> -->
+            <li>
+                <!-- <a href="javascript:void(0)" class="lang en fixed_flex"><iconify-icon
+                        icon="ri:english-input"></iconify-icon></a> -->
+            </li>
+        </ul>
+    </nav>
+
+    <!--HEADER-->
+    <header>
+        <figure class="carousel">
+            <img src="img/banner/01.png" alt="" class="blizer" />
+        </figure>
+        <ol class="carousel_count fixed_flex">
+            <li class="active">01</li>
+            <li>02</li>
+            <li>03</li>
+        </ol>
+        <aside class="carousel_arrows fixed_flex">
+            <a href="javascript:void(0)" class="left_arrow fixed_flex" onclick="left_arrow()"><iconify-icon
+                    icon="gg:arrow-left"></iconify-icon></a>
+            <a href="javascript:void(0)" class="right_arrow fixed_flex" onclick="right_arrow()"><iconify-icon
+                    icon="gg:arrow-right"></iconify-icon></a>
+        </aside>
+    </header>
+
+    <!--MAIN-->
+    <main>
+        <!--DIVISION_1-->
+        <div class="divisions division_1">
+            <article class="padding_3x">
+                <h1 class="title medium">Quem sou <strong class="small"> <em>EU!</em></strong></h1>
+                <p> "Sou um entusiasta da criatividade, apaixonado por desenhar e escrever. Minhas ideias são um reflexo das viagens que ocorrem dentro da minha mente. Este site foi criado para compartilhar meus projetos, desde livros e quadrinhos até rascunhos de pensamentos e inspirações. Espero que encontre algo que desperte seu interesse e que goste do que verá por aqui!"</p>
+            </article>
+        </div>
+
+        <!--DIVISION_2-->
+        <div class="divisions division_2 padding_2x">
+            <section class="title_header padding_1x">
+                <h1 class="title medium">Sobre o que você está interessado?</h1>
+                <span class="bar"></span>
+            </section>
+            <section class="cards flex padding_1x">
+                <article class="fixed_flex card padding_1x">
+                    <!-- <iconify-icon icon="la:donate"></iconify-icon> -->
+                    <h3 class="small">Livros</h3>
+                </article>
+                <article class="fixed_flex card padding_1x">
+                    <!-- <iconify-icon icon="carbon:collaborate"></iconify-icon> -->
+                    <h3 class="small">Quadrinhos</h3>
+                </article>
+                <article class="fixed_flex card padding_1x">
+                    <!-- <iconify-icon icon="bi:house"></iconify-icon> -->
+                    <h3 class="small">Rascunhos</h3>
+                </article>
+                <!-- <article class="fixed_flex card padding_1x">
+                    <iconify-icon icon="mdi:frequently-asked-questions"></iconify-icon>
+                    <h3 class="small">OTHER INQUIRIES</h3>
+                </article> -->
+            </section>
+        </div>
+
+        <!--DIVISION_3-->
+        <!-- <div class="divisions division_3 flex">
+            <section class="flex_content">
+                <iframe frameborder="0"
+                    src="https://www.google.com/maps/embed/v1/place?q=New+York,+NY,+USA&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+            </section> -->
+            <section class="flex_content">
+                <form class="padding_2x">
+                    <article class="title_header padding_1x">
+                        <h1 class="title medium">Tem alguma dúvida?</h1>
+                        <p>Sempre gostamos de ouvir de você. Não hesite em contactar-nos.</p>
+                    </article>
+                    <fieldset>
+                        <aside class="flex_content">
+                            <label for="motivo">Motivo do Contato</label>
+                            <input type="text" name="motivo" id="motivo" maxlength="50" />
+                        </aside>
+                    </fieldset>
+                    <fieldset class="flex">
+                        <aside class="flex_content">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" name="name" id="name" maxlength="50" />
+                        </aside>
+                        <!-- <aside class="flex_content">
+                            <label for="lname">Last name</label>
+                            <input type="text" name="lname" id="lname" maxlength="50" />
+                        </aside> -->
+                    </fieldset>
+                    <fieldset class="flex">
+                        <!-- <aside class="flex_content">
+                            <label for="tel">Telefone</label>
+                            <input type="tel" name="tel" id="tel" input-mode="number" maxlength="15" />
+                        </aside> -->
+                        <aside class="flex_content">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" input-mode="email" maxlength="50" />
+                        </aside>
+                    </fieldset>
+                    <fieldset>
+                        <label for="mssg">mensagem</label>
+                        <textarea name="mssg" id="mssg" maxlength="250"></textarea>
+                    </fieldset>
+                    <fieldset>
+                        <button class="btn btn_1">Enviar</button>
+                    </fieldset>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!--FOOTER-->
+    <footer class="flex padding_2x">
+        <h1 class="medium logo title">RA<em>fa</em>BUGENTO.</h1>
+        <ul class="flex links padding_2x">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Fale Comigo</a></li>
+            <li><a href="#">Quem Sou Eu</a></li>
+            <li><a href="#">Politica de Privacidade</a></li>
+        </ul>
+        <hr>
+        </hr>
+        <aside class="sub_footer flex">
+            <p>© 2025 - Todos os direitos reservados</p>
+            <!-- <a href="#">Cookie policy</a> -->
+        </aside>
+    </footer>
+</body>
+<script src="script.js"></script>
+
+</html>
