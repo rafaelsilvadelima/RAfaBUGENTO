@@ -84,9 +84,25 @@ function enviarWhatsApp() {
     const email = document.getElementById('email').value;
     const mensagem = document.getElementById('mssg').value;
 
-    const textoWhatsApp = `Motivo do Contato: ${motivo}\nNome: ${nome}\nEmail: ${email}\nMensagem: ${mensagem}`;
+    const textoWhatsApp = `Olá RAfaBUGENTO meu nome é ${nome}.\n Meu email é ${email} e vim pelo formulário do site, segue abaixo a minha mensagem:\n ${mensagem}`;
     const numeroWhatsApp = "5512982241144"; // Substitua pelo número de telefone do WhatsApp (com o código do país)
 
     const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(textoWhatsApp)}`;
     window.open(url, '_blank');
 }
+
+// --------------------------------------
+
+// Bloquear o botão direito do mouse em toda a página
+document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+}, false);
+
+// Impedir o arrastar de imagens
+const imgs = document.querySelectorAll('img');
+imgs.forEach(img => {
+    img.addEventListener('dragstart', function (event) {
+        event.preventDefault();
+    }, false);
+});
+
