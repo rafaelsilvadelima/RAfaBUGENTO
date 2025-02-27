@@ -67,3 +67,26 @@ function updateActiveIndicator() {
   });
   document.querySelector(".carousel_count li:nth-child(" + (carousel_count + 1) + ")").classList.add("active");
 }
+
+// -------------------------------------
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        enviarWhatsApp();
+    });
+});
+
+function enviarWhatsApp() {
+    const motivo = document.getElementById('motivo').value;
+    const nome = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const mensagem = document.getElementById('mssg').value;
+
+    const textoWhatsApp = `Motivo do Contato: ${motivo}\nNome: ${nome}\nEmail: ${email}\nMensagem: ${mensagem}`;
+    const numeroWhatsApp = "5512982241144"; // Substitua pelo número de telefone do WhatsApp (com o código do país)
+
+    const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(textoWhatsApp)}`;
+    window.open(url, '_blank');
+}
