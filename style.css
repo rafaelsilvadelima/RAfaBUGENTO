@@ -856,3 +856,44 @@ form textarea{
         font-size: 0.8rem;
     }
 }
+
+/* bloqueio de tela grande  ------------------------------------------------------------ */
+
+@media (min-width: 1000px) {
+    * {
+        display: none;
+    }
+
+    body, html {
+        display: inline;
+        background-color: #232323;
+        max-width: 100vw;
+        max-height: 100vh;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .bloqueio, .textobloqueio, em, br {
+        display: inline;
+    }
+
+    .bloqueio, .textobloqueio {
+        display: inline;
+        color:#FFF
+    }
+
+    .bloqueio {
+        width: 70vw;
+        height: 40vh;
+    }
+}
+
+@media (max-width: 999px) {
+    .bloqueio, .textobloqueio {
+        display: none;
+    }
+
+}
