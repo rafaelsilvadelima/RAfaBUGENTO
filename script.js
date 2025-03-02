@@ -71,38 +71,54 @@ function updateActiveIndicator() {
 // -------------------------------------
 
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        enviarWhatsApp();
-    });
+  const form = document.querySelector('form');
+  form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (verificarCamposObrigatorios()) {
+          enviarWhatsApp();
+      } else {
+          alert('Por favor, preencha todos os campos obrigatórios.');
+      }
+  });
 });
 
+function verificarCamposObrigatorios() {
+  const motivo = document.getElementById('motivo').value.trim();
+  const nome = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const mensagem = document.getElementById('mssg').value.trim();
+
+  if (motivo && nome && email && mensagem) {
+      return true;
+  } else {
+      return false;
+  }
+}
+
 function enviarWhatsApp() {
-    const motivo = document.getElementById('motivo').value;
-    const nome = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const mensagem = document.getElementById('mssg').value;
+  const motivo = document.getElementById('motivo').value;
+  const nome = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const mensagem = document.getElementById('mssg').value;
 
-    const textoWhatsApp = `Olá RAfaBUGENTO meu nome é ${nome}.\n Meu email é ${email} e vim pelo formulário do site, segue abaixo a minha mensagem:\n ${mensagem}`;
-    const numeroWhatsApp = "5512982241144"; // Substitua pelo número de telefone do WhatsApp (com o código do país)
+  const textoWhatsApp = `Olá RAfaBUGENTO meu nome é ${nome}.\n Meu email é ${email} e vim pelo formulário do site, segue abaixo a minha mensagem:\n ${mensagem}`;
+  const numeroWhatsApp = "5512982241144"; // Substitua pelo número de telefone do WhatsApp (com o código do país)
 
-    const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(textoWhatsApp)}`;
-    window.open(url, '_blank');
+  const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(textoWhatsApp)}`;
+  window.open(url, '_blank');
 }
 
 // --------------------------------------
 
 // Bloquear o botão direito do mouse em toda a página
 document.addEventListener('contextmenu', function (event) {
-    event.preventDefault();
+  event.preventDefault();
 }, false);
 
 // Impedir o arrastar de imagens
 const imgs = document.querySelectorAll('img');
 imgs.forEach(img => {
-    img.addEventListener('dragstart', function (event) {
-        event.preventDefault();
-    }, false);
+  img.addEventListener('dragstart', function (event) {
+      event.preventDefault();
+  }, false);
 });
-
