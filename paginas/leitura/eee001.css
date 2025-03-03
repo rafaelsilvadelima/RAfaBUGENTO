@@ -81,7 +81,7 @@ h1 {
   background: #fff;
 }
 
-.timeline ul li::after {
+/* .timeline ul li::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -92,28 +92,28 @@ h1 {
   border-radius: 50%;
   background: inherit;
   z-index: 1;
-}
+} */
 
 .timeline ul li div {
   position: relative;
   bottom: 0;
-  width: 400px;
+  width: 90vw;
   padding: 15px;
   background: #be5656;
 }
 
-.timeline ul li div::before {
+/* .timeline ul li div::before {
   content: "";
   position: absolute;
   bottom: 7px;
   width: 0;
   height: 0;
   border-style: solid;
-}
+} */
 
-.timeline ul li:nth-child(odd) div {
+/* .timeline ul li:nth-child(odd) div {
   left: 45px;
-}
+} */
 
 .timeline ul li:nth-child(odd) div::before {
   left: -15px;
@@ -176,10 +176,10 @@ time {
 
 @media screen and (max-width: 900px) {
   .timeline ul li div {
-    width: 250px;
+    width: 90vw;
   }
   .timeline ul li:nth-child(even) div {
-    left: -289px;
+    /* left: -289px; */
     /*250+45-6*/
   }
 }
@@ -189,10 +189,10 @@ time {
     margin-left: 20px;
   }
   .timeline ul li div {
-    width: calc(100vw - 91px);
+    width: 90vw;
   }
   .timeline ul li:nth-child(even) div {
-    left: 45px;
+    left: 0px;
   }
   .timeline ul li:nth-child(even) div::before {
     left: -15px;
@@ -356,4 +356,3 @@ nav{
 }
 
 /* card ------------------------------------------------------------------------------- */
-
