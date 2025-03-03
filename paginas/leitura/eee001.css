@@ -18,6 +18,10 @@
     --title_font:'Poppins', sans-serif;
 }
 
+html {
+  max-width: 100vw;
+}
+
 em{
     font-style:normal;
     color:var(--primary);

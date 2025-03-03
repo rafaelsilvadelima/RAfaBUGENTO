@@ -1,8 +1,8 @@
 var carousel_count = 0;
 var carousel_images = [
+  'img/banner/03.jpg',
   'img/banner/01.png',
-  'img/banner/02.png',
-  'img/banner/03.jpg'
+  'img/banner/02.png'
 ];
 
 var looper;
