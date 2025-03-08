@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAfaBUGENTO - Biblioteca de Obras</title>
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!--ICONIFY-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iconify/2.0.0/iconify.min.js"></script>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /***************************
+            CUSTOM SCROLL BAR
+        ****************************/
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        *,
+        html {
+            scroll-behavior: smooth;
+        }
+
+        *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFF;
+            --black: #000;
+            --dark: #232323;
+            --lite: #d6dee1;
+            --gray: rgba(1, 1, 1, 0.4);
+            --primary: #be5656;
+            --secondary: #a44747;
+            --default_font: 'Poppins', sans-serif;
+            --title_font: 'Poppins', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            height: 12px;
+            width: 8px;
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: gray;
+            -webkit-box-shadow: 0px 1px 2px var(--dark);
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: var(--dark);
+        }
+
+        /***************************
+                DEFAULT
+        ****************************/
+        body {
+            margin: 0;
+            overflow-x: hidden !important;
+            font-family: var(--default_font);
+            background-color: #f3f3f3;
+        }
+
+        a {
+            text-decoration: none !important;
+            min-width: fit-content;
+            width: fit-content;
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+        }
+
+        a:hover,
+        .active,
+        .active_sub_link,
+        .btn {
+            opacity: 1;
+        }
+
+        em {
+            font-style: normal;
+            color: var(--primary);
+        }
+
+        figure {
+            padding: 0;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        figure img {
+            width: 100%;
+            height: 100%;
+        }
+
+        a,
+        p,
+        .btn {
+            font-size: 15px;
+            transition: 0.5s;
+        }
+
+        p {
+            line-height: 1.9em;
+            opacity: 0.6;
+        }
+
+        a,
+        button,
+        input,
+        textarea,
+        select {
+            outline: none !important;
+        }
+
+        fieldset {
+            border: 0;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .title,
+        .sub_title {
+            font-family: var(--title_font);
+            font-weight: 700;
+        }
+
+        .flex,
+        .fixed_flex {
+            display: flex;
+        }
+
+        .flex_content {
+            width: 100%;
+            position: relative;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .padding_1x {
+            padding: 1rem;
+        }
+
+        .padding_2x {
+            padding: 2rem;
+        }
+
+        .padding_3x {
+            padding: 3rem;
+        }
+
+        .padding_4x {
+            padding: 4rem;
+        }
+
+        .big {
+            font-size: 2.5em;
+        }
+
+        .medium {
+            font-size: 2em;
+        }
+
+        .small {
+            font-size: 1.2em;
+        }
+
+        .divisions {
+            position: relative;
+        }
+
+        .title_header {
+            margin: auto;
+            text-align: center;
+            width: 60%;
+        }
+
+        .btn {
+            padding: 0.6rem 1rem;
+            border-radius: 40px;
+            border: 0;
+        }
+
+        .btn_1 {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn_1:hover {
+            opacity: 0.7;
+        }
+
+        .btn_2 {
+            background-color: transparent;
+            color: var(--white);
+            border: 1px solid var(--primary);
+        }
+
+        .btn_2:hover {
+            background-color: var(--primary);
+        }
+
+        @media (max-width: 1000px) {
+            .big {
+                font-size: 1.6em;
+            }
+
+            .medium {
+                font-size: 1.3em;
+            }
+
+            .small {
+                font-size: 1em;
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+            }
+
+            a,
+            p,
+            .btn {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .flex {
+                flex-wrap: wrap;
+            }
+
+            .padding_1x,
+            .padding_2x,
+            .padding_3x,
+            .padding_4x {
+                padding: 1rem;
+            }
+
+            .title_header {
+                width: 100%;
+            }
+        }
+
+        /***************************
+                        NAV
+        ****************************/
+        nav {
+            width: 100%;
+            padding: 1rem 3rem;
+            /* position: absolute; */
+            z-index: 9;
+            background-color: var(--dark);
+            color: var(--white);
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.5s;
+        }
+
+        .logo {
+            max-width: 200px;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            position: relative;
+            color: inherit;
+            opacity: 0.7;
+            margin: 0 1.5rem;
+        }
+
+        nav a b {
+            font-weight: 300;
+        }
+
+        nav li .active:after,
+        nav li:not(:last-child) a:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 0;
+            bottom: -0.5rem;
+            height: 2px;
+            background-color: var(--white);
+            transition: 0.5s;
+        }
+
+        nav li .active:after,
+        nav li:not(:last-child) a:hover:after {
+            width: 100% !important;
+        }
+
+        /***************************
+                       FOOTER
+        ****************************/
+        footer {
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        footer .logo,
+        footer .links,
+        footer hr,
+        footer .sub_footer {
+            flex: 1 1 100%;
+        }
+
+        footer .links {
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+        }
+
+        footer .links li {
+            margin: 0 1.5rem;
+        }
+
+        footer a {
+            color: var(--white);
+            opacity: 0.7;
+        }
+
+        footer hr {
+            opacity: 0.2;
+        }
+
+        footer .sub_footer {
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--lite);
+        }
+
+        /* Estilos para página de biblioteca */
+        .library-container {
+            max-width: 1200px;
+            margin: 120px auto 50px;
+            background-color: var(--white);
+            box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .library-header {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            border-radius: 25px;
+        }
+
+        .library-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .library-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Filtros */
+        .filter-container {
+            background-color: #f5f5f5;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .alphabet-filter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .alphabet-filter button {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--dark);
+            color: #000;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .alphabet-filter button:hover,
+        .alphabet-filter button.active {
+            background-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .alphabet-filter button.all {
+            width: auto;
+            padding: 0 15px;
+            border-radius: 20px;
+        }
+
+        .search-container {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px 0 0 25px;
+            font-size: 1rem;
+            font-family: var(--default_font);
+        }
+
+        .search-container button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            background-color: #a44747;
+        }
+
+        /* Lista de Obras */
+        .books-container {
+            padding: 2rem;
+            min-height: auto;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-cover-container {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .book-cover-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .book-card:hover .book-cover-container img {
+            transform: scale(1.05);
+        }
+
+        .book-info {
+            padding: 1.5rem;
+        }
+
+        .book-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .book-author {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 1rem;
+        }
+
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .book-status {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-ongoing {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .status-completed {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .book-card a {
+            display: block;
+            color: inherit;
+            height: 100%;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+        }
+
+        .no-results h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .no-results p {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .reset-btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background-color: #a44747;
+        }
+
+        /* Letras no topo dos grupos */
+        .letter-divider {
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            color: var(--dark);
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 10;
+        }
+
+        /* Paginação */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 3rem;
+        }
+
+        .pagination button {
+            min-width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            border: none;
+            background-color: #f1f1f1;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination button:hover,
+        .pagination button.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Modo noturno */
+        .night-mode-switch {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--dark);
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .night-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        .night-mode .library-container {
+            background-color: #2a2a2a;
+        }
+
+        .night-mode .library-header {
+            background-color: #222;
+        }
+
+        .night-mode .filter-container {
+            background-color: #222;
+            border-bottom-color: #333;
+        }
+
+        .night-mode .book-card {
+            background-color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .night-mode .book-title {
+            color: #e0e0e0;
+        }
+
+        .night-mode .book-author {
+            color: #bbb;
+        }
+
+        .night-mode .book-meta {
+            color: #aaa;
+        }
+
+        .night-mode .letter-divider {
+            color: #e0e0e0;
+            background-color: #2a2a2a;
+            border-bottom-color: var(--primary);
+        }
+
+        .night-mode .search-container input {
+            background-color: #333;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+
+        .night-mode .pagination button {
+            background-color: #333;
+            color: #e0e0e0;
+        }
+
+        .night-mode .pagination button:hover,
+        .night-mode .pagination button.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .night-mode .status-ongoing {
+            background-color: #1565c0;
+            color: #e3f2fd;
+        }
+
+        .night-mode .status-completed {
+            background-color: #1b5e20;
+            color: #e8f5e9;
+        }
+
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .night-mode #loading-screen {
+            background-color: #1a1a1a;
+        }
+
+        /* Animação do livro */
+        .book {
+            position: relative;
+            width: 80px;
+            height: 100px;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            margin-bottom: 30px;
+        }
+
+        .book-page {
+            position: absolute;
+            width: 70px;
+            height: 100px;
+            top: 0;
+            left: 5px;
+            background-color: var(--white);
+            transform-origin: left center;
+            transition: transform 0.5s ease-in-out;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            animation: flipping 2.5s infinite linear;
+        }
+
+        .book-page:nth-child(1) {
+            animation-delay: 0.0s;
+            background-color: #f5f5f5;
+        }
+
+        .book-page:nth-child(2) {
+            animation-delay: 0.2s;
+            background-color: #ebebeb;
+        }
+
+        .book-page:nth-child(3) {
+            animation-delay: 0.4s;
+            background-color: #e0e0e0;
+        }
+
+        .book-page:nth-child(4) {
+            animation-delay: 0.6s;
+            background-color: #d6d6d6;
+        }
+
+        .book-page:nth-child(5) {
+            animation-delay: 0.8s;
+            background-color: #cccccc;
+        }
+
+        .book-page:nth-child(6) {
+            animation-delay: 1.0s;
+            background-color: #c2c2c2;
+        }
+
+        @keyframes flipping {
+            0% {
+                transform: rotateY(0deg);
+                z-index: 1;
+            }
+
+            25% {
+                z-index: 2;
+            }
+
+            50% {
+                transform: rotateY(-180deg);
+                z-index: 1;
+            }
+
+            75% {
+                z-index: 0;
+            }
+
+            100% {
+                transform: rotateY(0deg);
+                z-index: 1;
+            }
+        }
+
+        .loading-text {
+            text-align: center;
+            color: var(--white);
+        }
+
+        .loading-text h2 {
+            margin-bottom: 10px;
+            font-family: var(--title_font);
+            font-weight: 700;
+        }
+
+        .loading-text p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .progress-container {
+            width: 200px;
+            height: 6px;
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px auto;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-percentage {
+            font-size: 14px;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        /* Para esconder o site até que tudo esteja carregado */
+        body.loading {
+            overflow: hidden;
+        }
+
+        body.loading nav,
+        body.loading header,
+        body.loading main,
+        body.loading footer,
+        body.loading .night-mode-switch {
+            opacity: 0;
+        }
+
+        /* Estilo para o botão de home */
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #a44747;
+        }
+
+        .night-mode .home-button {
+            background-color: var(--primary);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .book-cover-container {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .book-cover-container {
+                height: 180px;
+            }
+
+            .book-info {
+                padding: 1rem;
+            }
+
+            .book-title {
+                font-size: 1rem;
+            }
+
+            .alphabet-filter button {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Estilos gerais da biblioteca */
+        .library-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .library-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .library-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .library-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* Filtros */
+        .filter-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .alphabet-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .alphabet-filter button {
+            width: 32px;
+            height: 32px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .alphabet-filter button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .alphabet-filter button.active {
+            background-color: #a44747;
+            color: white;
+            border-color: #a44747;
+        }
+
+        .alphabet-filter button.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .alphabet-filter button.all {
+            width: auto;
+            padding: 0 15px;
+        }
+
+        .search-container {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        #search-input {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+
+        #search-button {
+            background-color: #a44747;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        /* Livros */
+        .books-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .book-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .book-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .book-cover {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 2/3;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .book-item:hover .book-cover img {
+            transform: scale(1.05);
+        }
+
+        .book-hover-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .book-item:hover .book-hover-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .book-genres {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .book-chapters,
+        .book-date {
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .book-status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .status-completed {
+            background-color: #28a745;
+        }
+
+        .status-ongoing {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .book-info {
+            padding: 15px;
+        }
+
+        .book-title {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .book-author {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Modo noturno */
+        .night-mode-switch,
+        .home-button {
+            position: fixed;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #a44747;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: background-color 0.3s;
+        }
+
+        .night-mode-switch {
+            bottom: 30px;
+            right: 30px;
+        }
+
+        .home-button {
+            bottom: 30px;
+            left: 30px;
+        }
+
+        .night-mode-switch:hover,
+        .home-button:hover {
+            background-color: #a44747;
+        }
+
+        .night-mode {
+            background-color: #222;
+            color: #eee;
+        }
+
+        .night-mode .library-subtitle {
+            color: #aaa;
+        }
+
+        .night-mode .alphabet-filter button {
+            background-color: #333;
+            border-color: #444;
+            color: #eee;
+        }
+
+        .night-mode .alphabet-filter button:hover {
+            background-color: #444;
+        }
+
+        .night-mode .alphabet-filter button.active {
+            background-color: #a44747;
+            color: white;
+        }
+
+        .night-mode #search-input {
+            background-color: #333;
+            color: #eee;
+            border-color: #444;
+        }
+
+        .night-mode .book-item {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .night-mode .book-author {
+            color: #aaa;
+        }
+
+        .night-mode .book-info {
+            background-color: #333;
+        }
+
+        /* Modo noturno */
+        .night-mode-switch {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--dark);
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .night-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        .night-mode .book-container {
+            background-color: #2a2a2a;
+        }
+
+        .night-mode .book-header {
+            background-color: #222;
+        }
+
+        .night-mode .book-content {
+            color: #ddd;
+        }
+
+        .night-mode .chapter-text p {
+            opacity: 0.85;
+        }
+
+        /* Mensagem de nenhum resultado */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .night-mode .no-results {
+            color: #aaa;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .library-title {
+                font-size: 2rem;
+            }
+
+            .books-container {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .book-title {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .books-container {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 1rem;
+            }
+
+            .alphabet-filter button {
+                width: 28px;
+                height: 28px;
+                font-size: 0.9rem;
+            }
+
+            .night-mode-switch,
+            .home-button {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .ler {
+            background-color: #be5656;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.5vh;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Tela de carregamento -->
+    <div id="loading-screen">
+        <div class="book">
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+        </div>
+        <div class="loading-text">
+            <h2>RA<em>fa</em>BUGENTO</h2>
+            <p>Carregando biblioteca...</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="loading-progress"></div>
+            </div>
+            <div class="progress-percentage" id="progress-percentage">0%</div>
+        </div>
+    </div>
+
+    <!--NAV-->
+    <nav class="flex">
+        <h1 class="medium logo"> RA<em>fa</em>BUGENTO</h1>
+        <!-- <ul class="flex links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#" class="active">Livros</a></li>
+        </ul> -->
+    </nav>
+
+    <!-- Container da Biblioteca -->
+    <div class="library-container">
+        <div class="library-header">
+            <h1 class="library-title">Biblioteca de Obras</h1>
+            <div class="library-subtitle">Explore todas as histórias criadas por Rafael <em>"BUGENTO"</em> Silva de Lima
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filter-container">
+            <div class="alphabet-filter" id="alphabet-filter">
+                <button class="all active" data-letter="all">Todos</button>
+                <!-- As letras serão geradas dinamicamente pelo JavaScript -->
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Buscar por título, autor ou gênero...">
+                <button id="search-button"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+
+        <!-- Lista de Obras -->
+        <div class="books-container" id="books-container">
+            <!-- O conteúdo será preenchido dinamicamente pelo JavaScript -->
+        </div>
+    </div>
+
+    <!-- Botão de modo noturno -->
+    <div class="night-mode-switch" id="night-mode-toggle">
+        <i class="fa fa-moon-o"></i>
+    </div>
+
+    <!-- Botão de home -->
+    <div class="home-button" id="home-button">
+        <a href="../../inicial.html"><i class="fa fa-home"></i></a>
+    </div>
+
+    <!--FOOTER-->
+    <footer class="flex padding_2x">
+        <h1 class="medium logo title">RA<em>fa</em>BUGENTO.</h1>
+        <!-- <ul class="flex links padding_2x">
+            <li><a href="../../inicial.html">Inicio</a></li>
+            <li><a href="#">Quem Sou Eu</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+        </ul> -->
+        <hr>
+        <aside class="sub_footer flex">
+            <p>© 2025 - Todos os direitos reservados</p>
+        </aside>
+    </footer>
+
+    <script>
+        // Array com os dados dos livros
+        const booksData = [
+            {
+                id: 1,
+                title: "O Silêncio que Nos Une",
+                author: "Rafael \"BUGENTO\" Silva de Lima",
+                cover: "004.png",
+                link: "lista.html",
+                genres: ["Fantasia", "Drama", "Aventura"],
+                status: "ongoing",
+                date: "Janeiro 2025",
+                chapters: 2
+            },
+            // {
+            //     id: 2,
+            //     title: "Além do Horizonte",
+            //     author: "Rafael \"BUGENTO\" Silva de Lima",
+            //     cover: "004.png",
+            //     link: "#",
+            //     genres: ["Ficção Científica", "Aventura"],
+            //     status: "completed",
+            //     date: "Novembro 2024",
+            //     chapters: 15
+            // },
+            // {
+            //     id: 3,
+            //     title: "Caminhos da Memória",
+            //     author: "Rafael \"BUGENTO\" Silva de Lima",
+            //     cover: "004.png",
+            //     link: "#",
+            //     genres: ["Drama", "Romance"],
+            //     status: "completed",
+            //     date: "Agosto 2024",
+            //     chapters: 12
+            // }
+        ]
+        document.addEventListener('DOMContentLoaded', function () {
+            // Referências aos elementos DOM
+            const booksContainer = document.getElementById('books-container');
+            const alphabetFilter = document.getElementById('alphabet-filter');
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const nightModeToggle = document.getElementById('night-mode-toggle');
+            const homeButton = document.getElementById('home-button');
+
+            // Verificar se o modo noturno está ativado no localStorage
+            if (localStorage.getItem('nightMode') === 'true') {
+                document.body.classList.add('night-mode');
+                nightModeToggle.innerHTML = '<i class="fa fa-sun-o"></i>';
+            }
+
+            // Função para gerar o filtro alfabético
+            function generateAlphabetFilter() {
+                const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+                // Obter letras iniciais presentes nos livros
+                const availableLetters = new Set();
+                booksData.forEach(book => {
+                    const firstLetter = book.title.charAt(0).toUpperCase();
+                    availableLetters.add(firstLetter);
+                });
+
+                // Adicionar as letras ao filtro
+                alphabet.forEach(letter => {
+                    const button = document.createElement('button');
+                    button.textContent = letter;
+                    button.dataset.letter = letter;
+
+                    // Desabilitar letras que não estão presentes
+                    if (!availableLetters.has(letter)) {
+                        button.classList.add('disabled');
+                    }
+
+                    button.addEventListener('click', function () {
+                        filterBooksByLetter(letter);
+                        // Remover classe active de todos os botões
+                        document.querySelectorAll('#alphabet-filter button').forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        // Adicionar classe active ao botão clicado
+                        this.classList.add('active');
+                    });
+
+                    alphabetFilter.appendChild(button);
+                });
+            }
+
+            // Função para renderizar os livros
+            function renderBooks(books = booksData) {
+                booksContainer.innerHTML = '';
+
+                if (books.length === 0) {
+                    booksContainer.innerHTML = '<div class="no-results">Nenhum livro encontrado</div>';
+                    return;
+                }
+
+                books.forEach(book => {
+                    const bookElement = document.createElement('div');
+                    bookElement.className = 'book-item';
+
+                    // Determinar classe de status
+                    const statusClass = book.status === 'completed' ? 'status-completed' : 'status-ongoing';
+                    const statusText = book.status === 'completed' ? 'Concluído' : 'Em andamento';
+
+                    bookElement.innerHTML = `
+           
+                    <div class="book-cover">
+                        <a href="${book.link}" class="book-link">
+                        <img src="${book.cover}" alt="${book.title}">
+                        <div class="book-link" class="ler"> Clique para ler </div>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">${book.title}</h3>
+                        <div class="book-chapters">${book.chapters} capítulos</div>
+                        <div class="book-status ${statusClass}">${statusText}</div>
+                        </a>
+                    </div>
+          
+            `;
+
+                    booksContainer.appendChild(bookElement);
+                });
+            }
+
+            // Função para filtrar livros por letra
+            function filterBooksByLetter(letter) {
+                if (letter === 'all') {
+                    renderBooks();
+                    return;
+                }
+
+                const filteredBooks = booksData.filter(book => {
+                    return book.title.charAt(0).toUpperCase() === letter;
+                });
+
+                renderBooks(filteredBooks);
+            }
+
+            // Função para pesquisar livros
+            function searchBooks() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+
+                if (searchTerm === '') {
+                    renderBooks();
+                    return;
+                }
+
+                const filteredBooks = booksData.filter(book => {
+                    return book.title.toLowerCase().includes(searchTerm) ||
+                        book.author.toLowerCase().includes(searchTerm) ||
+                        book.genres.some(genre => genre.toLowerCase().includes(searchTerm));
+                });
+
+                renderBooks(filteredBooks);
+
+                // Resetar o filtro alfabético para "Todos"
+                document.querySelectorAll('#alphabet-filter button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector('#alphabet-filter button[data-letter="all"]').classList.add('active');
+            }
+
+            // Event listeners
+            searchButton.addEventListener('click', searchBooks);
+            searchInput.addEventListener('keyup', function (event) {
+                if (event.key === 'Enter') {
+                    searchBooks();
+                }
+            });
+
+            // Toggle modo noturno
+            nightModeToggle.addEventListener('click', function () {
+                document.body.classList.toggle('night-mode');
+
+                if (document.body.classList.contains('night-mode')) {
+                    localStorage.setItem('nightMode', 'true');
+                    nightModeToggle.innerHTML = '<i class="fa fa-sun-o"></i>';
+                } else {
+                    localStorage.setItem('nightMode', 'false');
+                    nightModeToggle.innerHTML = '<i class="fa fa-moon-o"></i>';
+                }
+            });
+
+            // Botão Home
+            homeButton.addEventListener('click', function () {
+                window.location.href = 'index.html';
+            });
+
+            // Botão "Todos" no filtro alfabético
+            document.querySelector('#alphabet-filter button[data-letter="all"]').addEventListener('click', function () {
+                renderBooks();
+                // Remover classe active de todos os botões
+                document.querySelectorAll('#alphabet-filter button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Adicionar classe active ao botão "Todos"
+                this.classList.add('active');
+            });
+
+            // Inicialização
+            generateAlphabetFilter();
+            renderBooks();
+        });
+         // Script de carregamento corrigido
+document.addEventListener('DOMContentLoaded', function() {
+  // Adicionar classe de carregamento ao body
+  document.body.classList.add('loading');
+  
+  // Coletar todas as imagens do site
+  const allImages = Array.from(document.querySelectorAll('img'));
+  const totalImages = allImages.length;
+  let loadedImages = 0;
+  
+  // Função para atualizar a barra de progresso
+  function updateProgress() {
+    loadedImages++;
+    const progressPercentage = Math.round((loadedImages / totalImages) * 100);
+    
+    // Atualizar a barra de progresso
+    const progressBar = document.getElementById('loading-progress');
+    const progressText = document.getElementById('progress-percentage');
+    
+    if (progressBar && progressText) {
+      progressBar.style.width = progressPercentage + '%';
+      progressText.textContent = progressPercentage + '%';
+    }
+    
+    // Verificar se todas as imagens foram carregadas
+    if (loadedImages >= totalImages) {
+      completeLoading();
+    }
+  }
+  
+  // Verificar carregamento de cada imagem
+  allImages.forEach(img => {
+    // Se a imagem já estiver carregada
+    if (img.complete) {
+      updateProgress();
+    } else {
+      // Aguardar o carregamento da imagem
+      img.addEventListener('load', updateProgress);
+      img.addEventListener('error', updateProgress); // Considerar erros também
+    }
+  });
+  
+  // Garantir que o site será mostrado mesmo que algumas imagens falhem
+  setTimeout(function() {
+    if (loadedImages < totalImages) {
+      completeLoading();
+    }
+  }, 8000); // Tempo máximo de espera: 8 segundos
+  
+  // Função para remover a tela de carregamento
+  function completeLoading() {
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    // Fade out para a tela de carregamento
+    if (loadingScreen) {
+      loadingScreen.style.opacity = '0';
+      
+      // Remover a tela de carregamento após a transição
+      setTimeout(function() {
+        loadingScreen.style.display = 'none';
+        document.body.classList.remove('loading');
+      }, 500);
+    } else {
+      document.body.classList.remove('loading');
+    }
+  }
+  
+  // Removida a referência à variável carousel_images que causava o erro
+})
+    </script>
+
+</html>
