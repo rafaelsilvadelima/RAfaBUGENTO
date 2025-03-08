@@ -197,76 +197,77 @@ document.getElementById('night-mode-toggle').addEventListener('click', function(
       localStorage.setItem('night-mode', 'disabled'); // Salva a preferência no localStorage
   }
 });
+// Adicione este código no início do seu arquivo inicial.js
 
-// Função para verificar se todas as imagens foram carregadas
-function checkImagesLoaded() {
-  // Obter todas as imagens da página
-  const images = document.querySelectorAll('img');
-  let loadedImages = 0;
-  const totalImages = images.length;
+document.addEventListener('DOMContentLoaded', function() {
+  // Adicionar classe de carregamento ao body
+  document.body.classList.add('loading');
   
-  // Se não houver imagens, ocultar o preloader imediatamente
-  if (totalImages === 0) {
-    hidePreloader();
-    return;
+  // Coletar todas as imagens do site
+  const allImages = Array.from(document.querySelectorAll('img'));
+  const totalImages = allImages.length;
+  let loadedImages = 0;
+  
+  // Função para atualizar a barra de progresso
+  function updateProgress() {
+    loadedImages++;
+    const progressPercentage = Math.round((loadedImages / totalImages) * 100);
+    
+    // Atualizar a barra de progresso
+    const progressBar = document.getElementById('loading-progress');
+    const progressText = document.getElementById('progress-percentage');
+    
+    if (progressBar && progressText) {
+      progressBar.style.width = progressPercentage + '%';
+      progressText.textContent = progressPercentage + '%';
+    }
+    
+    // Verificar se todas as imagens foram carregadas
+    if (loadedImages >= totalImages) {
+      completeLoading();
+    }
   }
   
-  // Para cada imagem, verificar se foi carregada
-  images.forEach(img => {
+  // Verificar carregamento de cada imagem
+  allImages.forEach(img => {
     // Se a imagem já estiver carregada
     if (img.complete) {
-      loadedImages++;
-      if (loadedImages === totalImages) {
-        hidePreloader();
-      }
+      updateProgress();
     } else {
-      // Adicionar listener para quando a imagem for carregada
-      img.addEventListener('load', () => {
-        loadedImages++;
-        if (loadedImages === totalImages) {
-          hidePreloader();
-        }
-      });
-      
-      // Adicionar listener para caso a imagem falhe ao carregar
-      img.addEventListener('error', () => {
-        loadedImages++;
-        if (loadedImages === totalImages) {
-          hidePreloader();
-        }
-      });
+      // Aguardar o carregamento da imagem
+      img.addEventListener('load', updateProgress);
+      img.addEventListener('error', updateProgress); // Considerar erros também
     }
   });
   
-  // Definir um tempo máximo para o preloader (5 segundos)
-  setTimeout(hidePreloader, 5000);
-}
-
-// Função para ocultar o preloader
-function hidePreloader() {
-  const preloader = document.getElementById('preloader');
-  if (preloader) {
-    preloader.style.opacity = '0';
-    setTimeout(() => {
-      preloader.style.visibility = 'hidden';
-    }, 600);
+  // Garantir que o site será mostrado mesmo que algumas imagens falhem
+  setTimeout(function() {
+    if (loadedImages < totalImages) {
+      completeLoading();
+    }
+  }, 8000); // Tempo máximo de espera: 8 segundos
+  
+  // Função para remover a tela de carregamento
+  function completeLoading() {
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    // Fade out para a tela de carregamento
+    if (loadingScreen) {
+      loadingScreen.style.opacity = '0';
+      
+      // Remover a tela de carregamento após a transição
+      setTimeout(function() {
+        loadingScreen.style.display = 'none';
+        document.body.classList.remove('loading');
+      }, 500);
+    } else {
+      document.body.classList.remove('loading');
+    }
   }
-}
-
-// Adicionar ao evento de carregamento da página
-document.addEventListener('DOMContentLoaded', function() {
-  // Configuração original do site
-  showCurrentImage();
-  startCarousel();
   
-  // Verificar carregamento de imagens
-  checkImagesLoaded();
-  
-  // Resto do código original...
-  // (Código existente permanece inalterado)
-});
-
-// Se a página demorar mais de 8 segundos para carregar, ocultar o preloader de qualquer forma
-window.addEventListener('load', function() {
-  hidePreloader();
+  // Pré-carregar as imagens do carrossel
+  carousel_images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
 });
