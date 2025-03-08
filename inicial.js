@@ -197,3 +197,76 @@ document.getElementById('night-mode-toggle').addEventListener('click', function(
       localStorage.setItem('night-mode', 'disabled'); // Salva a preferência no localStorage
   }
 });
+
+// Função para verificar se todas as imagens foram carregadas
+function checkImagesLoaded() {
+  // Obter todas as imagens da página
+  const images = document.querySelectorAll('img');
+  let loadedImages = 0;
+  const totalImages = images.length;
+  
+  // Se não houver imagens, ocultar o preloader imediatamente
+  if (totalImages === 0) {
+    hidePreloader();
+    return;
+  }
+  
+  // Para cada imagem, verificar se foi carregada
+  images.forEach(img => {
+    // Se a imagem já estiver carregada
+    if (img.complete) {
+      loadedImages++;
+      if (loadedImages === totalImages) {
+        hidePreloader();
+      }
+    } else {
+      // Adicionar listener para quando a imagem for carregada
+      img.addEventListener('load', () => {
+        loadedImages++;
+        if (loadedImages === totalImages) {
+          hidePreloader();
+        }
+      });
+      
+      // Adicionar listener para caso a imagem falhe ao carregar
+      img.addEventListener('error', () => {
+        loadedImages++;
+        if (loadedImages === totalImages) {
+          hidePreloader();
+        }
+      });
+    }
+  });
+  
+  // Definir um tempo máximo para o preloader (5 segundos)
+  setTimeout(hidePreloader, 5000);
+}
+
+// Função para ocultar o preloader
+function hidePreloader() {
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    preloader.style.opacity = '0';
+    setTimeout(() => {
+      preloader.style.visibility = 'hidden';
+    }, 600);
+  }
+}
+
+// Adicionar ao evento de carregamento da página
+document.addEventListener('DOMContentLoaded', function() {
+  // Configuração original do site
+  showCurrentImage();
+  startCarousel();
+  
+  // Verificar carregamento de imagens
+  checkImagesLoaded();
+  
+  // Resto do código original...
+  // (Código existente permanece inalterado)
+});
+
+// Se a página demorar mais de 8 segundos para carregar, ocultar o preloader de qualquer forma
+window.addEventListener('load', function() {
+  hidePreloader();
+});
