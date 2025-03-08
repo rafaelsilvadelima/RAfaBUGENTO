@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAfaBUGENTO - Índice de Capítulos</title>
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!--ICONIFY-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iconify/2.0.0/iconify.min.js"></script>
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /***************************
+            CUSTOM SCROLL BAR
+        ****************************/
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        *,
+        html {
+            scroll-behavior: smooth;
+        }
+
+        *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFF;
+            --black: #000;
+            --dark: #232323;
+            --lite: #d6dee1;
+            --gray: rgba(1, 1, 1, 0.4);
+            --primary: #be5656;
+            --secondary: #0d1d37;
+            --default_font: 'Poppins', sans-serif;
+            --title_font: 'Poppins', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            height: 12px;
+            width: 8px;
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: gray;
+            -webkit-box-shadow: 0px 1px 2px var(--dark);
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: var(--dark);
+        }
+
+        /***************************
+                DEFAULT
+        ****************************/
+        body {
+            margin: 0;
+            overflow-x: hidden !important;
+            font-family: var(--default_font);
+            background-color: #f3f3f3;
+        }
+
+        a {
+            text-decoration: none !important;
+            min-width: fit-content;
+            width: fit-content;
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+        }
+
+        a:hover,
+        .active,
+        .active_sub_link,
+        .btn {
+            opacity: 1;
+        }
+
+        em {
+            font-style: normal;
+            color: var(--primary);
+        }
+
+        figure {
+            padding: 0;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        figure img {
+            width: 100%;
+            height: 100%;
+        }
+
+        a,
+        p,
+        .btn {
+            font-size: 15px;
+            transition: 0.5s;
+        }
+
+        p {
+            line-height: 1.9em;
+            opacity: 0.6;
+        }
+
+        a,
+        button,
+        input,
+        textarea,
+        select {
+            outline: none !important;
+        }
+
+        fieldset {
+            border: 0;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .title,
+        .sub_title {
+            font-family: var(--title_font);
+            font-weight: 700;
+        }
+
+        .flex,
+        .fixed_flex {
+            display: flex;
+        }
+
+        .flex_content {
+            width: 100%;
+            position: relative;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .padding_1x {
+            padding: 1rem;
+        }
+
+        .padding_2x {
+            padding: 2rem;
+        }
+
+        .padding_3x {
+            padding: 3rem;
+        }
+
+        .padding_4x {
+            padding: 4rem;
+        }
+
+        .big {
+            font-size: 2.5em;
+        }
+
+        .medium {
+            font-size: 2em;
+        }
+
+        .small {
+            font-size: 1.2em;
+        }
+
+        .divisions {
+            position: relative;
+        }
+
+        .title_header {
+            margin: auto;
+            text-align: center;
+            width: 60%;
+        }
+
+        .btn {
+            padding: 0.6rem 1rem;
+            border-radius: 40px;
+            border: 0;
+        }
+
+        .btn_1 {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn_1:hover {
+            opacity: 0.7;
+        }
+
+        .btn_2 {
+            background-color: transparent;
+            color: var(--white);
+            border: 1px solid var(--primary);
+        }
+
+        .btn_2:hover {
+            background-color: var(--primary);
+        }
+
+        @media (max-width: 1000px) {
+            .big {
+                font-size: 1.6em;
+            }
+
+            .medium {
+                font-size: 1.3em;
+            }
+
+            .small {
+                font-size: 1em;
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+            }
+
+            a,
+            p,
+            .btn {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .flex {
+                flex-wrap: wrap;
+            }
+
+            .padding_1x,
+            .padding_2x,
+            .padding_3x,
+            .padding_4x {
+                padding: 1rem;
+            }
+
+            .title_header {
+                width: 100%;
+            }
+        }
+
+        /***************************
+                        NAV
+        ****************************/
+        nav {
+            width: 100%;
+            padding: 1rem 3rem;
+            /* position: absolute; */
+            z-index: 9;
+            background-color: var(--dark);
+            color: var(--white);
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.5s;
+        }
+
+        .logo {
+            max-width: 200px;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            position: relative;
+            color: inherit;
+            opacity: 0.7;
+            margin: 0 1.5rem;
+        }
+
+        nav a b {
+            font-weight: 300;
+        }
+
+        nav li .active:after,
+        nav li:not(:last-child) a:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 0;
+            bottom: -0.5rem;
+            height: 2px;
+            background-color: var(--white);
+            transition: 0.5s;
+        }
+
+        nav li .active:after,
+        nav li:not(:last-child) a:hover:after {
+            width: 100% !important;
+        }
+
+        /***************************
+                       FOOTER
+        ****************************/
+        footer {
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        footer .logo,
+        footer .links,
+        footer hr,
+        footer .sub_footer {
+            flex: 1 1 100%;
+        }
+
+        footer .links {
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+        }
+
+        footer .links li {
+            margin: 0 1.5rem;
+        }
+
+        footer a {
+            color: var(--white);
+            opacity: 0.7;
+        }
+
+        footer hr {
+            opacity: 0.2;
+        }
+
+        footer .sub_footer {
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--lite);
+        }
+
+        /* Estilos para página de índice de capítulos */
+        .chapters-container {
+            max-width: 900px;
+            margin: 120px auto 50px;
+            background-color: var(--white);
+            box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .book-header {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .book-cover {
+            max-width: 180px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .book-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-author {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .book-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .chapters-list {
+            padding: 2rem;
+        }
+
+        .chapter-item {
+            padding: 1.2rem;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chapter-item:hover {
+            background-color: #f9f9f9;
+            transform: translateX(5px);
+        }
+
+        .chapter-item a {
+            color: var(--dark);
+            font-weight: 500;
+            display: block;
+            width: 100%;
+        }
+
+        .chapter-item .chapter-number {
+            color: var(--primary);
+            font-weight: 700;
+            margin-right: 15px;
+            font-size: 0.9rem;
+        }
+
+        .chapter-item .chapter-date {
+            color: #999;
+            font-size: 0.85rem;
+            text-align: right;
+            min-width: 100px;
+        }
+
+        .chapter-info {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .nav-button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            background-color: #a44747;
+        }
+
+        /* Modo noturno */
+        .night-mode-switch {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--dark);
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .night-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        .night-mode .chapters-container {
+            background-color: #2a2a2a;
+        }
+
+        .night-mode .book-header {
+            background-color: #222;
+        }
+
+        .night-mode .chapter-item {
+            border-bottom-color: #333;
+        }
+
+        .night-mode .chapter-item:hover {
+            background-color: #333;
+        }
+
+        .night-mode .chapter-item a {
+            color: #ddd;
+        }
+
+        .night-mode .chapter-item .chapter-date {
+            color: #777;
+        }
+
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .night-mode #loading-screen {
+            background-color: #1a1a1a;
+        }
+
+        /* Animação do livro */
+        .book {
+            position: relative;
+            width: 80px;
+            height: 100px;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            margin-bottom: 30px;
+        }
+
+        .book-page {
+            position: absolute;
+            width: 70px;
+            height: 100px;
+            top: 0;
+            left: 5px;
+            background-color: var(--white);
+            transform-origin: left center;
+            transition: transform 0.5s ease-in-out;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            animation: flipping 2.5s infinite linear;
+        }
+
+        .book-page:nth-child(1) {
+            animation-delay: 0.0s;
+            background-color: #f5f5f5;
+        }
+
+        .book-page:nth-child(2) {
+            animation-delay: 0.2s;
+            background-color: #ebebeb;
+        }
+
+        .book-page:nth-child(3) {
+            animation-delay: 0.4s;
+            background-color: #e0e0e0;
+        }
+
+        .book-page:nth-child(4) {
+            animation-delay: 0.6s;
+            background-color: #d6d6d6;
+        }
+
+        .book-page:nth-child(5) {
+            animation-delay: 0.8s;
+            background-color: #cccccc;
+        }
+
+        .book-page:nth-child(6) {
+            animation-delay: 1.0s;
+            background-color: #c2c2c2;
+        }
+
+        @keyframes flipping {
+            0% {
+                transform: rotateY(0deg);
+                z-index: 1;
+            }
+
+            25% {
+                z-index: 2;
+            }
+
+            50% {
+                transform: rotateY(-180deg);
+                z-index: 1;
+            }
+
+            75% {
+                z-index: 0;
+            }
+
+            100% {
+                transform: rotateY(0deg);
+                z-index: 1;
+            }
+        }
+
+        .loading-text {
+            text-align: center;
+            color: var(--white);
+        }
+
+        .loading-text h2 {
+            margin-bottom: 10px;
+            font-family: var(--title_font);
+            font-weight: 700;
+        }
+
+        .loading-text p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .progress-container {
+            width: 200px;
+            height: 6px;
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px auto;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-percentage {
+            font-size: 14px;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        /* Para esconder o site até que tudo esteja carregado */
+        body.loading {
+            overflow: hidden;
+        }
+
+        body.loading nav,
+        body.loading header,
+        body.loading main,
+        body.loading footer,
+        body.loading .night-mode-switch {
+            opacity: 0;
+        }
+
+        /* Estilo para o botão de home */
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #a44747;
+        }
+
+        .night-mode .home-button {
+            background-color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Tela de carregamento -->
+    <div id="loading-screen">
+        <div class="book">
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+        </div>
+        <div class="loading-text">
+            <h2>RA<em>fa</em>BUGENTO</h2>
+            <p>Carregando criatividade...</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="loading-progress"></div>
+            </div>
+            <div class="progress-percentage" id="progress-percentage">0%</div>
+        </div>
+    </div>
+
+    <!--NAV-->
+    <nav class="flex">
+        <h1 class="medium logo"> RA<em>fa</em>BUGENTO</h1>
+        <!-- <ul class="flex links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#" class="active">Livros</a></li>
+        </ul> -->
+    </nav>
+
+    <!-- Container de Capítulos -->
+    <div class="chapters-container">
+        <div class="book-header">
+            <img src="004.png" alt="Capa do Livro" class="book-cover">
+            <h1 class="book-title">O Silêncio que Nos Une</h1>
+            <div class="book-author">por Rafael <em>"BUGENTO"</em> Silva de Lima</div>
+            <div class="book-meta">
+                <span>Uma história sobre conexão</span>
+                <span>Publicado: Janeiro 2025</span>
+            </div>
+
+            <div class="navigation-buttons">
+                <a href="leitura000.html" class="nav-button">Primeiro Capítulo</a>
+                <a href="leitura001.html" class="nav-button">Capítulo Mais Recente</a>
+            </div>
+        </div>
+
+        <div class="chapters-list">
+            <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 0</span>
+                    <a href="leitura000.html">Prólogo: O Silêncio que Nos Une</a>
+                </div>
+                <span class="chapter-date">Mar 01</span>
+            </div>
+
+            <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 1</span>
+                    <a href="leitura001.html">Sussurros Sob a Cama</a>
+                </div>
+                <span class="chapter-date">Mar 08</span>
+            </div>
+
+            <!-- <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 2</span>
+                    <a href="leitura002.html">Dois Mundos, Um Portal</a>
+                </div>
+                <span class="chapter-date">Jan 09, 2025</span>
+            </div>
+            
+            <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 3</span>
+                    <a href="leitura003.html">Conexões Inesperadas</a>
+                </div>
+                <span class="chapter-date">Jan 15, 2025</span>
+            </div>
+            
+            <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 4</span>
+                    <a href="leitura004.html">Os Segredos de Luna</a>
+                </div>
+                <span class="chapter-date">Jan 22, 2025</span>
+            </div>
+            
+            <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 5</span>
+                    <a href="leitura005.html">O Passado de Kai</a>
+                </div>
+                <span class="chapter-date">Jan 29, 2025</span>
+            </div>
+            
+            <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 6</span>
+                    <a href="leitura006.html">Primeiros Passos</a>
+                </div>
+                <span class="chapter-date">Fev 05, 2025</span>
+            </div>
+            
+            <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 7</span>
+                    <a href="leitura007.html">Enfrentando Medos</a>
+                </div>
+                <span class="chapter-date">Fev 12, 2025</span>
+            </div>
+            
+            <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 8</span>
+                    <a href="leitura008.html">Estrelas Reconectadas</a>
+                </div>
+                <span class="chapter-date">Fev 19, 2025</span>
+            </div>
+            
+            <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 9</span>
+                    <a href="leitura009.html">O Confronto</a>
+                </div>
+                <span class="chapter-date">Fev 26, 2025</span>
+            </div>
+            
+            <div class="chapter-item">
+                <div class="chapter-info">
+                    <span class="chapter-number">Cap. 10</span>
+                    <a href="leitura010.html">Além do Silêncio</a>
+                </div>
+                <span class="chapter-date">Mar 05, 2025</span>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- Botão de modo noturno -->
+    <div class="night-mode-switch" id="night-mode-toggle">
+        <i class="fa fa-moon-o"></i>
+    </div>
+
+    <!--FOOTER-->
+    <footer class="flex padding_2x">
+        <h1 class="medium logo title">RA<em>fa</em>BUGENTO.</h1>
+        <!-- <ul class="flex links padding_2x">
+            <li><a href="../../inicial.html">Inicio</a></li>
+            <li><a href="#">Quem Sou Eu</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+        </ul> -->
+        <hr>
+        <aside class="sub_footer flex">
+            <p>© 2025 - Todos os direitos reservados</p>
+        </aside>
+        <!-- Botão de home -->
+        <div class="home-button" id="home-button">
+            <i class="fa fa-home"></i>
+        </div>
+    </footer>
+
+    <script>
+        // Alternar modo noturno
+        if (localStorage.getItem('night-mode') === 'enabled') {
+            document.body.classList.add('night-mode');
+            const icon = document.getElementById('night-mode-toggle').querySelector('i');
+            icon.classList.remove('fa-moon-o');
+            icon.classList.add('fa-sun-o');
+        }
+
+        document.getElementById('night-mode-toggle').addEventListener('click', function () {
+            document.body.classList.toggle('night-mode');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('night-mode')) {
+                icon.classList.remove('fa-moon-o');
+                icon.classList.add('fa-sun-o');
+                localStorage.setItem('night-mode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun-o');
+                icon.classList.add('fa-moon-o');
+                localStorage.setItem('night-mode', 'disabled');
+            }
+        });
+
+        // Bloqueio do botão direito do mouse
+        document.addEventListener('contextmenu', function (event) {
+            event.preventDefault();
+        }, false);
+
+        // Impedir arrastar imagens
+        const imgs = document.querySelectorAll('img');
+        imgs.forEach(img => {
+            img.addEventListener('dragstart', function (event) {
+                event.preventDefault();
+            }, false);
+        });
+
+        // Script de carregamento
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.add('loading');
+
+            const allImages = Array.from(document.querySelectorAll('img'));
+            const totalImages = allImages.length;
+            let loadedImages = 0;
+
+            function updateProgress() {
+                loadedImages++;
+                const progressPercentage = Math.round((loadedImages / totalImages) * 100);
+
+                const progressBar = document.getElementById('loading-progress');
+                const progressText = document.getElementById('progress-percentage');
+
+                if (progressBar && progressText) {
+                    progressBar.style.width = progressPercentage + '%';
+                    progressText.textContent = progressPercentage + '%';
+                }
+
+                if (loadedImages >= totalImages) {
+                    completeLoading();
+                }
+            }
+
+            allImages.forEach(img => {
+                if (img.complete) {
+                    updateProgress();
+                } else {
+                    img.addEventListener('load', updateProgress);
+                    img.addEventListener('error', updateProgress);
+                }
+            });
+
+            setTimeout(function () {
+                if (loadedImages < totalImages) {
+                    completeLoading();
+                }
+            }, 8000);
+
+            function completeLoading() {
+                const loadingScreen = document.getElementById('loading-screen');
+
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+
+                    setTimeout(function () {
+                        loadingScreen.style.display = 'none';
+                        document.body.classList.remove('loading');
+                    }, 500);
+                } else {
+                    document.body.classList.remove('loading');
+                }
+            }
+        });
+        // Adicionar evento de clique ao botão de home
+        document.getElementById('home-button').addEventListener('click', function () {
+            window.location.href = '../../inicial.html';
+        });
+    </script>
+</body>
+
+</html>
