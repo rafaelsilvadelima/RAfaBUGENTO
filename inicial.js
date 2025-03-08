@@ -175,3 +175,25 @@ const carousel_images = [
       }, false);
     });
   });
+        // Alternar modo noturno
+// Verifica se o usuário já escolheu o modo escuro anteriormente
+if (localStorage.getItem('night-mode') === 'enabled') {
+  document.body.classList.add('night-mode');
+  const icon = document.getElementById('night-mode-toggle').querySelector('i');
+  icon.classList.remove('fa-moon-o');
+  icon.classList.add('fa-sun-o');
+}
+  // Adiciona o evento de clique para alternar o modo escuro
+document.getElementById('night-mode-toggle').addEventListener('click', function() {
+  document.body.classList.toggle('night-mode');
+  const icon = this.querySelector('i');
+  if (document.body.classList.contains('night-mode')) {
+      icon.classList.remove('fa-moon-o');
+      icon.classList.add('fa-sun-o');
+      localStorage.setItem('night-mode', 'enabled'); // Salva a preferência no localStorage
+  } else {
+      icon.classList.remove('fa-sun-o');
+      icon.classList.add('fa-moon-o');
+      localStorage.setItem('night-mode', 'disabled'); // Salva a preferência no localStorage
+  }
+});
