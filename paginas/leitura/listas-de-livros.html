@@ -1337,10 +1337,10 @@
         </div>
     </div>
 
-    <!-- Botão de modo noturno -->
-    <div class="night-mode-switch" id="night-mode-toggle">
-        <i class="fa fa-moon-o"></i>
-    </div>
+        <!-- Botão de modo noturno -->
+        <div class="night-mode-switch" id="night-mode-toggle">
+            <i class="fa fa-moon-o"></i>
+        </div>
 
     <!-- Botão de home -->
     <div class="home-button" id="home-button">
@@ -1534,18 +1534,28 @@
                 }
             });
 
-            // Toggle modo noturno
-            nightModeToggle.addEventListener('click', function () {
-                document.body.classList.toggle('night-mode');
-
-                if (document.body.classList.contains('night-mode')) {
-                    localStorage.setItem('nightMode', 'true');
-                    nightModeToggle.innerHTML = '<i class="fa fa-sun-o"></i>';
-                } else {
-                    localStorage.setItem('nightMode', 'false');
-                    nightModeToggle.innerHTML = '<i class="fa fa-moon-o"></i>';
-                }
-            });
+       // Alternar modo noturno
+// Verifica se o usuário já escolheu o modo escuro anteriormente
+if (localStorage.getItem('night-mode') === 'enabled') {
+  document.body.classList.add('night-mode');
+  const icon = document.getElementById('night-mode-toggle').querySelector('i');
+  icon.classList.remove('fa-moon-o');
+  icon.classList.add('fa-sun-o');
+}
+  // Adiciona o evento de clique para alternar o modo escuro
+document.getElementById('night-mode-toggle').addEventListener('click', function() {
+  document.body.classList.toggle('night-mode');
+  const icon = this.querySelector('i');
+  if (document.body.classList.contains('night-mode')) {
+      icon.classList.remove('fa-moon-o');
+      icon.classList.add('fa-sun-o');
+      localStorage.setItem('night-mode', 'enabled'); // Salva a preferência no localStorage
+  } else {
+      icon.classList.remove('fa-sun-o');
+      icon.classList.add('fa-moon-o');
+      localStorage.setItem('night-mode', 'disabled'); // Salva a preferência no localStorage
+  }
+});
 
             // Botão Home
             homeButton.addEventListener('click', function () {
