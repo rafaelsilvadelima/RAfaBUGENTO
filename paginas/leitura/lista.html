@@ -735,7 +735,8 @@
     <!-- Container de Capítulos -->
     <div class="chapters-container">
         <div class="book-header">
-            <img src="004.png" alt="Capa do Livro" class="book-cover">
+            <img src="004.png" alt="Capa do Livro" class="book-cover"
+                onerror="this.src='placeholder.png'; this.onerror=null;">
             <h1 class="book-title">O Silêncio que Nos Une</h1>
             <div class="book-author">por Rafael <em>"BUGENTO"</em> Silva de Lima</div>
             <div class="book-meta">
@@ -750,21 +751,25 @@
         </div>
 
         <div class="chapters-list">
-            <div class="chapter-item">
-                <div class="chapter-info">
-                    <span class="chapter-number">Cap. 0</span>
-                    <a href="leitura000.html">Prólogo: O Silêncio que Nos Une</a>
+            <a href="leitura000.html" class="chapter-item-link">
+                <div class="chapter-item">
+                    <div class="chapter-info">
+                        <span class="chapter-number">Cap. 0</span>
+                        <span class="chapter-title">Prólogo: O Silêncio que Nos Une</span>
+                    </div>
+                    <span class="chapter-date">Mar 01</span>
                 </div>
-                <span class="chapter-date">Mar 01</span>
-            </div>
+            </a>
 
-            <div class="chapter-item">
-                <div class="chapter-info">
-                    <span class="chapter-number">Cap. 1</span>
-                    <a href="leitura001.html">Sussurros Sob a Cama</a>
+            <a href="leitura001.html" class="chapter-item-link">
+                <div class="chapter-item">
+                    <div class="chapter-info">
+                        <span class="chapter-number">Cap. 1</span>
+                        <span class="chapter-title">Sussurros Sob a Cama</span>
+                    </div>
+                    <span class="chapter-date">Mar 08</span>
                 </div>
-                <span class="chapter-date">Mar 08</span>
-            </div>
+            </a>
 
             <!-- <div class="chapter-item">
                 <div class="chapter-info">
@@ -906,8 +911,11 @@
             const allImages = Array.from(document.querySelectorAll('img'));
             const totalImages = allImages.length;
             let loadedImages = 0;
+            let hasCompleted = false;
 
             function updateProgress() {
+                if (hasCompleted) return;
+
                 loadedImages++;
                 const progressPercentage = Math.round((loadedImages / totalImages) * 100);
 
@@ -924,22 +932,10 @@
                 }
             }
 
-            allImages.forEach(img => {
-                if (img.complete) {
-                    updateProgress();
-                } else {
-                    img.addEventListener('load', updateProgress);
-                    img.addEventListener('error', updateProgress);
-                }
-            });
-
-            setTimeout(function () {
-                if (loadedImages < totalImages) {
-                    completeLoading();
-                }
-            }, 8000);
-
             function completeLoading() {
+                if (hasCompleted) return;
+                hasCompleted = true;
+
                 const loadingScreen = document.getElementById('loading-screen');
 
                 if (loadingScreen) {
@@ -953,6 +949,18 @@
                     document.body.classList.remove('loading');
                 }
             }
+
+            allImages.forEach(img => {
+                if (img.complete) {
+                    updateProgress();
+                } else {
+                    img.addEventListener('load', updateProgress);
+                    img.addEventListener('error', updateProgress);
+                }
+            });
+
+            // Fallback para garantir que a página carregue mesmo se houver problemas com imagens
+            setTimeout(completeLoading, 8000);
         });
         // Adicionar evento de clique ao botão de home
         document.getElementById('home-button').addEventListener('click', function () {

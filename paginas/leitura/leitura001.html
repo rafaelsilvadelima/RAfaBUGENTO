@@ -22,22 +22,25 @@
         /***************************
             CUSTOM SCROLL BAR
         ****************************/
-        
+
         a {
             color: white;
             text-decoration: none;
         }
-        
-        *, html {
+
+        *,
+        html {
             scroll-behavior: smooth;
         }
-        
-        *, *:after, *:before {
+
+        *,
+        *:after,
+        *:before {
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
         }
-        
+
         :root {
             --white: #FFF;
             --black: #000;
@@ -49,22 +52,22 @@
             --default_font: 'Poppins', sans-serif;
             --title_font: 'Poppins', sans-serif;
         }
-        
+
         ::-webkit-scrollbar {
             height: 12px;
             width: 8px;
             background: var(--dark);
         }
-        
+
         ::-webkit-scrollbar-thumb {
             background: gray;
             -webkit-box-shadow: 0px 1px 2px var(--dark);
         }
-        
+
         ::-webkit-scrollbar-corner {
             background: var(--dark);
         }
-        
+
         /***************************
                 DEFAULT
         ****************************/
@@ -74,7 +77,7 @@
             font-family: var(--default_font);
             background-color: #f3f3f3;
         }
-        
+
         a {
             text-decoration: none !important;
             min-width: fit-content;
@@ -82,171 +85,187 @@
             width: -webkit-fit-content;
             width: -moz-fit-content;
         }
-        
-        a:hover, .active, .active_sub_link, .btn {
+
+        a:hover,
+        .active,
+        .active_sub_link,
+        .btn {
             opacity: 1;
         }
-        
+
         em {
             font-style: normal;
             color: var(--primary);
         }
-        
+
         figure {
             padding: 0;
             margin: 0;
             pointer-events: none;
         }
-        
+
         figure img {
             width: 100%;
             height: 100%;
         }
-        
-        a, p, .btn {
+
+        a,
+        p,
+        .btn {
             font-size: 15px;
             transition: 0.5s;
         }
-        
+
         p {
             line-height: 1.9em;
             opacity: 0.6;
         }
-        
-        a, button, input, textarea, select {
+
+        a,
+        button,
+        input,
+        textarea,
+        select {
             outline: none !important;
         }
-        
+
         fieldset {
             border: 0;
         }
-        
+
         ul {
             padding: 0;
             margin: 0;
         }
-        
+
         li {
             list-style: none;
         }
-        
-        .title, .sub_title {
+
+        .title,
+        .sub_title {
             font-family: var(--title_font);
             font-weight: 700;
         }
-        
-        .flex, .fixed_flex {
+
+        .flex,
+        .fixed_flex {
             display: flex;
         }
-        
+
         .flex_content {
             width: 100%;
             position: relative;
         }
-        
+
         .grid {
             display: grid;
         }
-        
+
         .padding_1x {
             padding: 1rem;
         }
-        
+
         .padding_2x {
             padding: 2rem;
         }
-        
+
         .padding_3x {
             padding: 3rem;
         }
-        
+
         .padding_4x {
             padding: 4rem;
         }
-        
+
         .big {
             font-size: 2.5em;
         }
-        
+
         .medium {
             font-size: 2em;
         }
-        
+
         .small {
             font-size: 1.2em;
         }
-        
+
         .divisions {
             position: relative;
         }
-        
+
         .title_header {
             margin: auto;
             text-align: center;
             width: 60%;
         }
-        
+
         .btn {
             padding: 0.6rem 1rem;
             border-radius: 40px;
             border: 0;
         }
-        
+
         .btn_1 {
             background-color: var(--primary);
             color: var(--white);
         }
-        
+
         .btn_1:hover {
             opacity: 0.7;
         }
-        
+
         .btn_2 {
             background-color: transparent;
             color: var(--white);
             border: 1px solid var(--primary);
         }
-        
+
         .btn_2:hover {
             background-color: var(--primary);
         }
-        
+
         @media (max-width: 1000px) {
             .big {
                 font-size: 1.6em;
             }
-        
+
             .medium {
                 font-size: 1.3em;
             }
-        
+
             .small {
                 font-size: 1em;
             }
-        
+
             .btn {
                 padding: 0.5rem 1rem;
             }
-        
-            a, p, .btn {
+
+            a,
+            p,
+            .btn {
                 font-size: 12px;
             }
         }
-        
+
         @media (max-width: 620px) {
             .flex {
                 flex-wrap: wrap;
             }
-        
-            .padding_1x, .padding_2x, .padding_3x, .padding_4x {
+
+            .padding_1x,
+            .padding_2x,
+            .padding_3x,
+            .padding_4x {
                 padding: 1rem;
             }
-        
+
             .title_header {
                 width: 100%;
             }
         }
-        
+
         /***************************
                         NAV
         ****************************/
@@ -261,26 +280,27 @@
             justify-content: space-between;
             transition: 0.5s;
         }
-        
+
         .logo {
             max-width: 200px;
             font-weight: 700;
             margin: 0;
             padding: 0;
         }
-        
+
         nav a {
             position: relative;
             color: inherit;
             opacity: 0.7;
             margin: 0 1.5rem;
         }
-        
+
         nav a b {
             font-weight: 300;
         }
-        
-        nav li .active:after, nav li:not(:last-child) a:after {
+
+        nav li .active:after,
+        nav li:not(:last-child) a:after {
             content: "";
             position: absolute;
             left: 0;
@@ -290,11 +310,12 @@
             background-color: var(--white);
             transition: 0.5s;
         }
-        
-        nav li .active:after, nav li:not(:last-child) a:hover:after {
+
+        nav li .active:after,
+        nav li:not(:last-child) a:hover:after {
             width: 100% !important;
         }
-        
+
         /***************************
                        FOOTER
         ****************************/
@@ -306,37 +327,40 @@
             background-color: var(--dark);
             color: var(--white);
         }
-        
-        footer .logo, footer .links, footer hr, footer .sub_footer {
+
+        footer .logo,
+        footer .links,
+        footer hr,
+        footer .sub_footer {
             flex: 1 1 100%;
         }
-        
+
         footer .links {
             margin: auto;
             align-items: center;
             justify-content: center;
         }
-        
+
         footer .links li {
             margin: 0 1.5rem;
         }
-        
+
         footer a {
             color: var(--white);
             opacity: 0.7;
         }
-        
+
         footer hr {
             opacity: 0.2;
         }
-        
+
         footer .sub_footer {
             align-items: center;
             justify-content: space-between;
             font-size: 12px;
             color: var(--lite);
         }
-        
+
         /* Estilos para página de leitura */
         .book-container {
             max-width: 900px;
@@ -346,7 +370,7 @@
             border-radius: 15px;
             overflow: hidden;
         }
-        
+
         .book-header {
             background-color: var(--dark);
             color: var(--white);
@@ -354,7 +378,7 @@
             text-align: center;
             position: relative;
         }
-        
+
         .book-cover {
             max-width: 180px;
             margin: 0 auto;
@@ -363,18 +387,18 @@
             box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.3);
             margin-bottom: 1.5rem;
         }
-        
+
         .book-title {
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
-        
+
         .book-author {
             font-size: 1.2rem;
             opacity: 0.8;
             margin-bottom: 1rem;
         }
-        
+
         .book-meta {
             display: flex;
             justify-content: center;
@@ -382,36 +406,36 @@
             font-size: 0.9rem;
             opacity: 0.7;
         }
-        
+
         .book-content {
             padding: 2rem;
             line-height: 1.8;
             font-size: 1.1rem;
         }
-        
+
         .book-chapter {
             margin-bottom: 2rem;
         }
-        
+
         .chapter-title {
             margin-bottom: 1.5rem;
             color: var(--primary);
             font-size: 1.6rem;
         }
-        
+
         .chapter-text p {
             margin-bottom: 1rem;
             opacity: 0.9;
             text-align: justify;
         }
-        
+
         .navigation-controls {
             display: flex;
             justify-content: space-between;
             padding: 1.5rem 2rem;
             border-top: 1px solid #eee;
         }
-        
+
         .nav-button {
             padding: 0.8rem 1.5rem;
             background-color: var(--primary);
@@ -421,16 +445,16 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        
+
         .nav-button:hover {
             background-color: #a44747;
         }
-        
+
         .nav-button.disabled {
             background-color: #ccc;
             cursor: not-allowed;
         }
-        
+
         /* Seletor de capítulos */
         .chapter-selector {
             display: flex;
@@ -438,12 +462,12 @@
             justify-content: center;
             gap: 10px;
         }
-        
+
         .selector-label {
             font-weight: 500;
             color: #777;
         }
-        
+
         .chapter-dropdown {
             padding: 0.5rem 1rem;
             border-radius: 5px;
@@ -451,7 +475,7 @@
             background-color: #f9f9f9;
             font-family: var(--default_font);
         }
-        
+
         /* Barra de progresso de leitura */
         .reading-progress {
             position: fixed;
@@ -463,7 +487,7 @@
             z-index: 10;
             transition: width 0.2s;
         }
-        
+
         /* Modo noturno */
         .night-mode-switch {
             position: fixed;
@@ -479,216 +503,226 @@
             justify-content: center;
             cursor: pointer;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
-        
+
         .night-mode {
             background-color: #1a1a1a;
             color: #e0e0e0;
         }
-        
+
         .night-mode .book-container {
             background-color: #2a2a2a;
         }
-        
+
         .night-mode .book-header {
             background-color: #222;
         }
-        
+
         .night-mode .book-content {
             color: #ddd;
         }
-        
+
         .night-mode .chapter-text p {
             opacity: 0.85;
         }
-        
+
         /* Bloqueio de tela grande */
         @media (min-width: 1000px) {
-            .bloqueio, .textobloqueio {
+
+            .bloqueio,
+            .textobloqueio {
                 display: none;
             }
         }
-        
+
         @media (max-width: 999px) {
-            .bloqueio, .textobloqueio {
+
+            .bloqueio,
+            .textobloqueio {
                 display: none;
             }
         }
-        
+
         /* Responsividade */
         @media (max-width: 768px) {
             .book-container {
                 margin: 100px 15px 30px;
             }
-            
+
             .book-cover {
                 max-width: 140px;
             }
-            
+
             .book-title {
                 font-size: 1.6rem;
             }
-            
+
             .book-meta {
                 flex-direction: column;
                 gap: 0.5rem;
             }
-            
+
             .book-content {
                 padding: 1.5rem;
                 font-size: 1rem;
             }
         }
+
         /* Adicione este código ao seu arquivo inicial.css */
-/* Loading Screen */
-#loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--dark);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease;
-}
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
 
-.night-mode #loading-screen {
-  background-color: #1a1a1a;
-}
+        .night-mode #loading-screen {
+            background-color: #1a1a1a;
+        }
 
-/* Animação do livro */
-.book {
-  position: relative;
-  width: 80px;
-  height: 100px;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  margin-bottom: 30px;
-}
+        /* Animação do livro */
+        .book {
+            position: relative;
+            width: 80px;
+            height: 100px;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            margin-bottom: 30px;
+        }
 
-.book-page {
-  position: absolute;
-  width: 70px;
-  height: 100px;
-  top: 0;
-  left: 5px;
-  background-color: var(--white);
-  transform-origin: left center;
-  transition: transform 0.5s ease-in-out;
-  border-radius: 3px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  animation: flipping 2.5s infinite linear;
-}
+        .book-page {
+            position: absolute;
+            width: 70px;
+            height: 100px;
+            top: 0;
+            left: 5px;
+            background-color: var(--white);
+            transform-origin: left center;
+            transition: transform 0.5s ease-in-out;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            animation: flipping 2.5s infinite linear;
+        }
 
-.book-page:nth-child(1) {
-  animation-delay: 0.0s;
-  background-color: #f5f5f5;
-}
+        .book-page:nth-child(1) {
+            animation-delay: 0.0s;
+            background-color: #f5f5f5;
+        }
 
-.book-page:nth-child(2) {
-  animation-delay: 0.2s;
-  background-color: #ebebeb;
-}
+        .book-page:nth-child(2) {
+            animation-delay: 0.2s;
+            background-color: #ebebeb;
+        }
 
-.book-page:nth-child(3) {
-  animation-delay: 0.4s;
-  background-color: #e0e0e0;
-}
+        .book-page:nth-child(3) {
+            animation-delay: 0.4s;
+            background-color: #e0e0e0;
+        }
 
-.book-page:nth-child(4) {
-  animation-delay: 0.6s;
-  background-color: #d6d6d6;
-}
+        .book-page:nth-child(4) {
+            animation-delay: 0.6s;
+            background-color: #d6d6d6;
+        }
 
-.book-page:nth-child(5) {
-  animation-delay: 0.8s;
-  background-color: #cccccc;
-}
+        .book-page:nth-child(5) {
+            animation-delay: 0.8s;
+            background-color: #cccccc;
+        }
 
-.book-page:nth-child(6) {
-  animation-delay: 1.0s;
-  background-color: #c2c2c2;
-}
+        .book-page:nth-child(6) {
+            animation-delay: 1.0s;
+            background-color: #c2c2c2;
+        }
 
-@keyframes flipping {
-  0% {
-    transform: rotateY(0deg);
-    z-index: 1;
-  }
-  25% {
-    z-index: 2;
-  }
-  50% {
-    transform: rotateY(-180deg);
-    z-index: 1;
-  }
-  75% {
-    z-index: 0;
-  }
-  100% {
-    transform: rotateY(0deg);
-    z-index: 1;
-  }
-}
+        @keyframes flipping {
+            0% {
+                transform: rotateY(0deg);
+                z-index: 1;
+            }
 
-.loading-text {
-  text-align: center;
-  color: var(--white);
-}
+            25% {
+                z-index: 2;
+            }
 
-.loading-text h2 {
-  margin-bottom: 10px;
-  font-family: var(--title_font);
-  font-weight: 700;
-}
+            50% {
+                transform: rotateY(-180deg);
+                z-index: 1;
+            }
 
-.loading-text p {
-  margin-bottom: 15px;
-  opacity: 0.8;
-}
+            75% {
+                z-index: 0;
+            }
 
-.progress-container {
-  width: 200px;
-  height: 6px;
-  background-color: #333;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 10px auto;
-}
+            100% {
+                transform: rotateY(0deg);
+                z-index: 1;
+            }
+        }
 
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background-color: var(--primary);
-  border-radius: 10px;
-  transition: width 0.3s ease;
-}
+        .loading-text {
+            text-align: center;
+            color: var(--white);
+        }
 
-.progress-percentage {
-  font-size: 14px;
-  margin-top: 5px;
-  opacity: 0.9;
-}
+        .loading-text h2 {
+            margin-bottom: 10px;
+            font-family: var(--title_font);
+            font-weight: 700;
+        }
 
-/* Para esconder o site até que tudo esteja carregado */
-body.loading {
-  overflow: hidden;
-}
+        .loading-text p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
 
-body.loading nav,
-body.loading header,
-body.loading main,
-body.loading footer,
-body.loading .night-mode-switch {
-  opacity: 0;
-}
-/* Estilo para o botão de home */
-.home-button {
+        .progress-container {
+            width: 200px;
+            height: 6px;
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px auto;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-percentage {
+            font-size: 14px;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        /* Para esconder o site até que tudo esteja carregado */
+        body.loading {
+            overflow: hidden;
+        }
+
+        body.loading nav,
+        body.loading header,
+        body.loading main,
+        body.loading footer,
+        body.loading .night-mode-switch {
+            opacity: 0;
+        }
+
+        /* Estilo para o botão de home */
+        .home-button {
             position: fixed;
             bottom: 20px;
             left: 20px;
@@ -740,87 +774,136 @@ body.loading .night-mode-switch {
                 <span>Publicado: Janeiro 2025</span>
             </div>
         </div>
-        
+
         <div class="book-content">
             <div class="book-chapter">
                 <h2 class="chapter-title">Capítulo 1: <em>O Primeiro Sussurro </em></h2>
                 <div class="chapter-text">
-                    <p>Kai estava tendo um daqueles dias em que o peso do mundo parecia esmagar seu peito. Ele havia tentado assistir a um vídeo no celular para se distrair, mas as notificações das redes sociais o lembravam de tudo o que ele tentava esquecer. Fotos de colegas sorrindo, festas das quais ele nunca foi convidado, comentários maldosos que ele não conseguia apagar da memória. Ele desligou o telefone e se encolheu no canto do quarto, respirando rápido, como se o ar estivesse acabando.</p>
+                    <p>Kai estava tendo um daqueles dias em que o peso do mundo parecia esmagar seu peito. Ele havia
+                        tentado assistir a um vídeo no celular para se distrair, mas as notificações das redes sociais o
+                        lembravam de tudo o que ele tentava esquecer. Fotos de colegas sorrindo, festas das quais ele
+                        nunca foi convidado, comentários maldosos que ele não conseguia apagar da memória. Ele desligou
+                        o telefone e se encolheu no canto do quarto, respirando rápido, como se o ar estivesse acabando.
+                    </p>
 
-                    <p>"Por que eu sou assim?", ele sussurrou para si mesmo, as lágrimas escorrendo pelo rosto. Sem pensar, ele se arrastou para debaixo da cama, como fazia sempre que se sentia pequeno demais para o mundo. Lá, no escuro, ele podia fingir que não existia.</p>
-                    
-                    <p>Do outro lado da cidade, Luna estava sentada na cama, olhando para as fotos da irmã no celular. Era o aniversário dela, e a dor parecia mais intensa do que nunca. Ela tentou cantarolar uma música que a irmã costumava cantar, mas a voz falhou. Em vez disso, ela se deitou no chão, encostando a cabeça no carpete, como se quisesse se aproximar de algo, alguém.</p>
-                    
+                    <p>"Por que eu sou assim?", ele sussurrou para si mesmo, as lágrimas escorrendo pelo rosto. Sem
+                        pensar, ele se arrastou para debaixo da cama, como fazia sempre que se sentia pequeno demais
+                        para o mundo. Lá, no escuro, ele podia fingir que não existia.</p>
+
+                    <p>Do outro lado da cidade, Luna estava sentada na cama, olhando para as fotos da irmã no celular.
+                        Era o aniversário dela, e a dor parecia mais intensa do que nunca. Ela tentou cantarolar uma
+                        música que a irmã costumava cantar, mas a voz falhou. Em vez disso, ela se deitou no chão,
+                        encostando a cabeça no carpete, como se quisesse se aproximar de algo, alguém.</p>
+
                     <p>Foi então que ela ouviu.</p>
-                    
+
                     <p>"Por que eu sou assim?"</p>
-                    
-                    <p>A voz era suave, quase imperceptível, mas estava lá. Luna levantou a cabeça, confusa. A voz parecia vir de baixo da cama. Ela hesitou por um momento, o coração acelerado. "Isso é... real?", ela pensou, olhando para o vazio escuro sob a cama. "Olá?", ela sussurrou, quase sem esperar uma resposta.</p>
-                    
-                    <p>Kai ouviu. Ele parou de respirar por um instante, certo de que estava imaginando coisas. Mas a voz era real, e vinha de algum lugar que ele não conseguia entender. "Quem... quem está aí?", ele perguntou, sua voz tremendo. Ele se encolheu ainda mais, como se esperasse que algo ou alguém pudesse surgir do escuro.</p>
-                    
-                    <p>"Eu... eu sou Luna", ela respondeu, ainda tentando processar o que estava acontecendo. "Como você está falando comigo?"</p>
-                    
-                    <p>"Eu não sei", Kai admitiu, saindo debaixo da cama e olhando ao redor, como se esperasse encontrar uma explicação. "Eu estava aqui, no meu quarto, e... de repente, ouvi você."</p>
-                    
-                    <p>Luna sentiu um calafrio percorrer sua espinha. "Isso não faz sentido", ela murmurou, mas algo na voz dele a fez continuar. "Você... você está debaixo da minha cama?"</p>
-                    
-                    <p>"Não, eu estou debaixo da minha cama", Kai respondeu, confuso. "Mas... como você pode me ouvir?"</p>
-                    
-                    <p>Os dois ficaram em silêncio por um momento, tentando entender o que estava acontecendo. Era impossível, mas ao mesmo tempo, era real. E, de alguma forma, isso não importava. O que importava era que, pela primeira vez em muito tempo, eles não estavam sozinhos.</p>
-                    
-                    <p>"Eu... eu também estou no meu quarto", Luna disse, sentando-se no chão e encostando a cabeça na cama. "Eu não saio daqui há muito tempo."</p>
-                    
-                    <p>"Eu também não", Kai respondeu, sentindo uma estranha conexão com aquela voz. "É... é seguro aqui."</p>
-                    
-                    <p>Luna hesitou, mas algo na voz dele a fez continuar. "Por que você não sai do quarto?", ela perguntou, quase sem querer.</p>
-                    
-                    <p>Kai ficou em silêncio por um momento, como se estivesse lutando consigo mesmo para responder. "As pessoas... elas me machucam", ele finalmente disse, sua voz quase um sussurro. "É mais fácil ficar aqui."</p>
-                    
-                    <p>Luna sentiu um nó na garganta. "Eu entendo", ela respondeu, olhando para as fotos da irmã no celular. "Eu perdi alguém muito importante para mim. Desde então, o mundo lá fora parece... grande demais."</p>
-                    
-                    <p>Kai ficou quieto por um momento, como se estivesse processando as palavras dela. "Eu sinto muito", ele finalmente disse, sua voz suave. "Eu... eu não sei o que dizer."</p>
-                    
-                    <p>"Você não precisa dizer nada", Luna respondeu, sentindo uma estranha sensação de alívio. "Só... é bom saber que não estou sozinha."</p>
-                    
-                    <p>Kai sorriu, mesmo sabendo que ela não podia vê-lo. "Eu também", ele disse. "Eu... eu não sei como isso está acontecendo, mas... estou feliz por ter te ouvido."</p>
-                    
-                    <p>Luna sentiu uma lágrima escorrer pelo rosto, mas desta vez, não era de tristeza. "Eu também", ela sussurrou. "Obrigada por estar aqui."</p>
-                    
-                    <p>Foi então que ouviram batidas na porta do quarto de Kai. "Kai? Tudo bem aí?", era a voz de sua mãe, preocupada.</p>
-                    
-                    <p>Kai congelou. "Um segundo!", ele respondeu, tentando disfarçar a ansiedade na voz. Ele olhou para baixo da cama, como se esperasse que Luna pudesse ouvir sua hesitação. "Eu... eu preciso ir", ele sussurrou, quase pedindo desculpas.</p>
-                    
+
+                    <p>A voz era suave, quase imperceptível, mas estava lá. Luna levantou a cabeça, confusa. A voz
+                        parecia vir de baixo da cama. Ela hesitou por um momento, o coração acelerado. "Isso é...
+                        real?", ela pensou, olhando para o vazio escuro sob a cama. "Olá?", ela sussurrou, quase sem
+                        esperar uma resposta.</p>
+
+                    <p>Kai ouviu. Ele parou de respirar por um instante, certo de que estava imaginando coisas. Mas a
+                        voz era real, e vinha de algum lugar que ele não conseguia entender. "Quem... quem está aí?",
+                        ele perguntou, sua voz tremendo. Ele se encolheu ainda mais, como se esperasse que algo ou
+                        alguém pudesse surgir do escuro.</p>
+
+                    <p>"Eu... eu sou Luna", ela respondeu, ainda tentando processar o que estava acontecendo. "Como você
+                        está falando comigo?"</p>
+
+                    <p>"Eu não sei", Kai admitiu, saindo debaixo da cama e olhando ao redor, como se esperasse encontrar
+                        uma explicação. "Eu estava aqui, no meu quarto, e... de repente, ouvi você."</p>
+
+                    <p>Luna sentiu um calafrio percorrer sua espinha. "Isso não faz sentido", ela murmurou, mas algo na
+                        voz dele a fez continuar. "Você... você está debaixo da minha cama?"</p>
+
+                    <p>"Não, eu estou debaixo da minha cama", Kai respondeu, confuso. "Mas... como você pode me ouvir?"
+                    </p>
+
+                    <p>Os dois ficaram em silêncio por um momento, tentando entender o que estava acontecendo. Era
+                        impossível, mas ao mesmo tempo, era real. E, de alguma forma, isso não importava. O que
+                        importava era que, pela primeira vez em muito tempo, eles não estavam sozinhos.</p>
+
+                    <p>"Eu... eu também estou no meu quarto", Luna disse, sentando-se no chão e encostando a cabeça na
+                        cama. "Eu não saio daqui há muito tempo."</p>
+
+                    <p>"Eu também não", Kai respondeu, sentindo uma estranha conexão com aquela voz. "É... é seguro
+                        aqui."</p>
+
+                    <p>Luna hesitou, mas algo na voz dele a fez continuar. "Por que você não sai do quarto?", ela
+                        perguntou, quase sem querer.</p>
+
+                    <p>Kai ficou em silêncio por um momento, como se estivesse lutando consigo mesmo para responder. "As
+                        pessoas... elas me machucam", ele finalmente disse, sua voz quase um sussurro. "É mais fácil
+                        ficar aqui."</p>
+
+                    <p>Luna sentiu um nó na garganta. "Eu entendo", ela respondeu, olhando para as fotos da irmã no
+                        celular. "Eu perdi alguém muito importante para mim. Desde então, o mundo lá fora parece...
+                        grande demais."</p>
+
+                    <p>Kai ficou quieto por um momento, como se estivesse processando as palavras dela. "Eu sinto
+                        muito", ele finalmente disse, sua voz suave. "Eu... eu não sei o que dizer."</p>
+
+                    <p>"Você não precisa dizer nada", Luna respondeu, sentindo uma estranha sensação de alívio. "Só... é
+                        bom saber que não estou sozinha."</p>
+
+                    <p>Kai sorriu, mesmo sabendo que ela não podia vê-lo. "Eu também", ele disse. "Eu... eu não sei como
+                        isso está acontecendo, mas... estou feliz por ter te ouvido."</p>
+
+                    <p>Luna sentiu uma lágrima escorrer pelo rosto, mas desta vez, não era de tristeza. "Eu também", ela
+                        sussurrou. "Obrigada por estar aqui."</p>
+
+                    <p>Foi então que ouviram batidas na porta do quarto de Kai. "Kai? Tudo bem aí?", era a voz de sua
+                        mãe, preocupada.</p>
+
+                    <p>Kai congelou. "Um segundo!", ele respondeu, tentando disfarçar a ansiedade na voz. Ele olhou para
+                        baixo da cama, como se esperasse que Luna pudesse ouvir sua hesitação. "Eu... eu preciso ir",
+                        ele sussurrou, quase pedindo desculpas.</p>
+
                     <p>"Está tudo bem?", Luna perguntou, sua voz carregada de preocupação.</p>
-                    
-                    <p>"Sim, só... meus pais estão aqui. Eu volto já", ele prometeu, embora não tivesse certeza de como faria isso.</p>
-                    
-                    <p>Ele saiu debaixo da cama e abriu a porta, encontrando seus pais do outro lado. "Está tudo bem, Kai? Ouvimos barulhos", sua mãe disse, olhando para ele com uma expressão de preocupação.</p>
-                    
+
+                    <p>"Sim, só... meus pais estão aqui. Eu volto já", ele prometeu, embora não tivesse certeza de como
+                        faria isso.</p>
+
+                    <p>Ele saiu debaixo da cama e abriu a porta, encontrando seus pais do outro lado. "Está tudo bem,
+                        Kai? Ouvimos barulhos", sua mãe disse, olhando para ele com uma expressão de preocupação.</p>
+
                     <p>"Está tudo bem", ele respondeu, forçando um sorriso. "Só estava... pensando."</p>
-                    
-                    <p>Seus pais trocaram olhares, mas decidiram não pressioná-lo. "Se precisar de algo, estamos aqui", seu pai disse, colocando uma mão no ombro dele antes de se afastar.</p>
-                    
-                    <p>Kai fechou a porta e voltou para o quarto, seu coração batendo rápido. Ele se ajoelhou ao lado da cama, olhando para o vazio escuro. "Luna?", ele sussurrou, quase sem esperar uma resposta.</p>
-                    
-                    <p>Do outro lado, Luna estava sentada no chão, segurando o celular com força. Ela tinha ouvido a conversa dele com os pais e agora se perguntava se aquela conexão tinha sido real ou apenas um produto de sua mente cansada. "Kai?", ela chamou, sua voz quase imperceptível.</p>
-                    
+
+                    <p>Seus pais trocaram olhares, mas decidiram não pressioná-lo. "Se precisar de algo, estamos aqui",
+                        seu pai disse, colocando uma mão no ombro dele antes de se afastar.</p>
+
+                    <p>Kai fechou a porta e voltou para o quarto, seu coração batendo rápido. Ele se ajoelhou ao lado da
+                        cama, olhando para o vazio escuro. "Luna?", ele sussurrou, quase sem esperar uma resposta.</p>
+
+                    <p>Do outro lado, Luna estava sentada no chão, segurando o celular com força. Ela tinha ouvido a
+                        conversa dele com os pais e agora se perguntava se aquela conexão tinha sido real ou apenas um
+                        produto de sua mente cansada. "Kai?", ela chamou, sua voz quase imperceptível.</p>
+
                     <p>Mas não houve resposta.</p>
-                    
-                    <p>Os dois ficaram em silêncio, cada um em seu quarto, olhando para o vazio debaixo da cama. A dúvida pairou no ar: aquilo tinha sido real? Ou eles estavam enlouquecendo?</p>
-                    
-                    <p>Kai se deitou na cama, olhando para o teto. "Talvez eu tenha imaginado tudo", ele pensou, mas algo dentro dele se recusava a acreditar nisso.</p>
-                    
-                    <p>Luna, por sua vez, se encolheu no chão, abraçando os joelhos. "Talvez eu só precise dormir", ela murmurou, mas o coração dela ainda batia rápido, como se esperasse ouvir aquela voz novamente.</p>
-                    
-                    <p>E assim, ambos adormeceram, carregando a mesma dúvida e a mesma esperança. A noite os envolveu, e o silêncio voltou a reinar. Mas, em algum lugar entre os sonhos e a realidade, uma conexão inexplicável havia sido feita. E, talvez, ela não tivesse acabado.</p>
+
+                    <p>Os dois ficaram em silêncio, cada um em seu quarto, olhando para o vazio debaixo da cama. A
+                        dúvida pairou no ar: aquilo tinha sido real? Ou eles estavam enlouquecendo?</p>
+
+                    <p>Kai se deitou na cama, olhando para o teto. "Talvez eu tenha imaginado tudo", ele pensou, mas
+                        algo dentro dele se recusava a acreditar nisso.</p>
+
+                    <p>Luna, por sua vez, se encolheu no chão, abraçando os joelhos. "Talvez eu só precise dormir", ela
+                        murmurou, mas o coração dela ainda batia rápido, como se esperasse ouvir aquela voz novamente.
+                    </p>
+
+                    <p>E assim, ambos adormeceram, carregando a mesma dúvida e a mesma esperança. A noite os envolveu, e
+                        o silêncio voltou a reinar. Mas, em algum lugar entre os sonhos e a realidade, uma conexão
+                        inexplicável havia sido feita. E, talvez, ela não tivesse acabado.</p>
                 </div>
             </div>
         </div>
-        
+
         <div class="navigation-controls">
-            <button class="nav-button disabled"><a href="../../paginas/leitura/leitura000.html">Capítulo Anterior</a></button>
-            
+            <button class="nav-button disabled"><a href="../../paginas/leitura/leitura000.html">Capítulo
+                    Anterior</a></button>
+
             <!-- <div class="chapter-selector">
                 <span class="selector-label">Ir para:</span>
                 <select class="chapter-dropdown" id="chapter-select">
@@ -830,7 +913,7 @@ body.loading .night-mode-switch {
                     <option value="4">Capítulo 4: Guardiões da Fronteira</option>
                 </select>
             </div> -->
-            
+
             <button class="nav-button"> <a href="../../em breve/embreve.html">Próximo Capítulo</a> </button>
         </div>
     </div>
@@ -842,7 +925,8 @@ body.loading .night-mode-switch {
 
     <!-- Tela de bloqueio para dispositivos grandes -->
     <section class="bloqueio">
-        <h1 class="medium logo title textobloqueio">Vixi! <em> :(</em> <br> <br> Essa página está configurada para abrir em telas menores em celulares.</h1>
+        <h1 class="medium logo title textobloqueio">Vixi! <em> :(</em> <br> <br> Essa página está configurada para abrir
+            em telas menores em celulares.</h1>
     </section>
 
     <!--FOOTER-->
@@ -859,73 +943,73 @@ body.loading .night-mode-switch {
             <p>© 2025 - Todos os direitos reservados</p>
         </aside>
     </footer>
-<!-- Adicione este código logo após a abertura da tag <body> -->
+    <!-- Adicione este código logo após a abertura da tag <body> -->
     <div id="loading-screen">
         <div class="book">
-          <div class="book-page"></div>
-          <div class="book-page"></div>
-          <div class="book-page"></div>
-          <div class="book-page"></div>
-          <div class="book-page"></div>
-          <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
+            <div class="book-page"></div>
         </div>
         <div class="loading-text">
-          <h2>RA<em>fa</em>BUGENTO</h2>
-          <p>Carregando criatividade...</p>
-          <div class="progress-container">
-            <div class="progress-bar" id="loading-progress"></div>
-          </div>
-          <div class="progress-percentage" id="progress-percentage">0%</div>
+            <h2>RA<em>fa</em>BUGENTO</h2>
+            <p>Carregando criatividade...</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="loading-progress"></div>
+            </div>
+            <div class="progress-percentage" id="progress-percentage">0%</div>
         </div>
-      </div>
-      <!-- Botão de home -->
-      <div class="home-button" id="home-button">
+    </div>
+    <!-- Botão de home -->
+    <div class="home-button" id="home-button">
         <i class="fa fa-home"></i>
     </div>
     <script>
         // Progresso de leitura
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             document.getElementById("reading-progress").style.width = scrolled + "%";
         });
-        
-        // Alternar modo noturno
-// Verifica se o usuário já escolheu o modo escuro anteriormente
-if (localStorage.getItem('night-mode') === 'enabled') {
-    document.body.classList.add('night-mode');
-    const icon = document.getElementById('night-mode-toggle').querySelector('i');
-    icon.classList.remove('fa-moon-o');
-    icon.classList.add('fa-sun-o');
-}
 
-// Adiciona o evento de clique para alternar o modo escuro
-document.getElementById('night-mode-toggle').addEventListener('click', function() {
-    document.body.classList.toggle('night-mode');
-    const icon = this.querySelector('i');
-    if (document.body.classList.contains('night-mode')) {
-        icon.classList.remove('fa-moon-o');
-        icon.classList.add('fa-sun-o');
-        localStorage.setItem('night-mode', 'enabled'); // Salva a preferência no localStorage
-    } else {
-        icon.classList.remove('fa-sun-o');
-        icon.classList.add('fa-moon-o');
-        localStorage.setItem('night-mode', 'disabled'); // Salva a preferência no localStorage
-    }
-});
-        
+        // Alternar modo noturno
+        // Verifica se o usuário já escolheu o modo escuro anteriormente
+        if (localStorage.getItem('night-mode') === 'enabled') {
+            document.body.classList.add('night-mode');
+            const icon = document.getElementById('night-mode-toggle').querySelector('i');
+            icon.classList.remove('fa-moon-o');
+            icon.classList.add('fa-sun-o');
+        }
+
+        // Adiciona o evento de clique para alternar o modo escuro
+        document.getElementById('night-mode-toggle').addEventListener('click', function () {
+            document.body.classList.toggle('night-mode');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('night-mode')) {
+                icon.classList.remove('fa-moon-o');
+                icon.classList.add('fa-sun-o');
+                localStorage.setItem('night-mode', 'enabled'); // Salva a preferência no localStorage
+            } else {
+                icon.classList.remove('fa-sun-o');
+                icon.classList.add('fa-moon-o');
+                localStorage.setItem('night-mode', 'disabled'); // Salva a preferência no localStorage
+            }
+        });
+
         // Mudança de capítulo
-        document.getElementById('chapter-select') && document.getElementById('chapter-select').addEventListener('change', function() {
+        document.getElementById('chapter-select') && document.getElementById('chapter-select').addEventListener('change', function () {
             const chapter = this.value;
             alert('Navegando para o Capítulo ' + chapter + ' (Funcionalidade simulada)');
         });
-        
+
         // Bloqueio do botão direito do mouse
         document.addEventListener('contextmenu', function (event) {
             event.preventDefault();
         }, false);
-        
+
         // Impedir arrastar imagens
         const imgs = document.querySelectorAll('img');
         imgs.forEach(img => {
@@ -933,78 +1017,78 @@ document.getElementById('night-mode-toggle').addEventListener('click', function(
                 event.preventDefault();
             }, false);
         });
-        
+
         // Script de carregamento corrigido
-document.addEventListener('DOMContentLoaded', function() {
-  // Adicionar classe de carregamento ao body
-  document.body.classList.add('loading');
-  
-  // Coletar todas as imagens do site
-  const allImages = Array.from(document.querySelectorAll('img'));
-  const totalImages = allImages.length;
-  let loadedImages = 0;
-  
-  // Função para atualizar a barra de progresso
-  function updateProgress() {
-    loadedImages++;
-    const progressPercentage = Math.round((loadedImages / totalImages) * 100);
-    
-    // Atualizar a barra de progresso
-    const progressBar = document.getElementById('loading-progress');
-    const progressText = document.getElementById('progress-percentage');
-    
-    if (progressBar && progressText) {
-      progressBar.style.width = progressPercentage + '%';
-      progressText.textContent = progressPercentage + '%';
-    }
-    
-    // Verificar se todas as imagens foram carregadas
-    if (loadedImages >= totalImages) {
-      completeLoading();
-    }
-  }
-  
-  // Verificar carregamento de cada imagem
-  allImages.forEach(img => {
-    // Se a imagem já estiver carregada
-    if (img.complete) {
-      updateProgress();
-    } else {
-      // Aguardar o carregamento da imagem
-      img.addEventListener('load', updateProgress);
-      img.addEventListener('error', updateProgress); // Considerar erros também
-    }
-  });
-  
-  // Garantir que o site será mostrado mesmo que algumas imagens falhem
-  setTimeout(function() {
-    if (loadedImages < totalImages) {
-      completeLoading();
-    }
-  }, 8000); // Tempo máximo de espera: 8 segundos
-  
-  // Função para remover a tela de carregamento
-  function completeLoading() {
-    const loadingScreen = document.getElementById('loading-screen');
-    
-    // Fade out para a tela de carregamento
-    if (loadingScreen) {
-      loadingScreen.style.opacity = '0';
-      
-      // Remover a tela de carregamento após a transição
-      setTimeout(function() {
-        loadingScreen.style.display = 'none';
-        document.body.classList.remove('loading');
-      }, 500);
-    } else {
-      document.body.classList.remove('loading');
-    }
-  }
-  
-  // Removida a referência à variável carousel_images que causava o erro
-});
-// Adicionar evento de clique ao botão de home
-document.getElementById('home-button').addEventListener('click', function () {
+        document.addEventListener('DOMContentLoaded', function () {
+            // Adicionar classe de carregamento ao body
+            document.body.classList.add('loading');
+
+            // Coletar todas as imagens do site
+            const allImages = Array.from(document.querySelectorAll('img'));
+            const totalImages = allImages.length;
+            let loadedImages = 0;
+
+            // Função para atualizar a barra de progresso
+            function updateProgress() {
+                loadedImages++;
+                const progressPercentage = Math.round((loadedImages / totalImages) * 100);
+
+                // Atualizar a barra de progresso
+                const progressBar = document.getElementById('loading-progress');
+                const progressText = document.getElementById('progress-percentage');
+
+                if (progressBar && progressText) {
+                    progressBar.style.width = progressPercentage + '%';
+                    progressText.textContent = progressPercentage + '%';
+                }
+
+                // Verificar se todas as imagens foram carregadas
+                if (loadedImages >= totalImages) {
+                    completeLoading();
+                }
+            }
+
+            // Verificar carregamento de cada imagem
+            allImages.forEach(img => {
+                // Se a imagem já estiver carregada
+                if (img.complete) {
+                    updateProgress();
+                } else {
+                    // Aguardar o carregamento da imagem
+                    img.addEventListener('load', updateProgress);
+                    img.addEventListener('error', updateProgress); // Considerar erros também
+                }
+            });
+
+            // Garantir que o site será mostrado mesmo que algumas imagens falhem
+            setTimeout(function () {
+                if (loadedImages < totalImages) {
+                    completeLoading();
+                }
+            }, 8000); // Tempo máximo de espera: 8 segundos
+
+            // Função para remover a tela de carregamento
+            function completeLoading() {
+                const loadingScreen = document.getElementById('loading-screen');
+
+                // Fade out para a tela de carregamento
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+
+                    // Remover a tela de carregamento após a transição
+                    setTimeout(function () {
+                        loadingScreen.style.display = 'none';
+                        document.body.classList.remove('loading');
+                    }, 500);
+                } else {
+                    document.body.classList.remove('loading');
+                }
+            }
+
+            // Removida a referência à variável carousel_images que causava o erro
+        });
+        // Adicionar evento de clique ao botão de home
+        document.getElementById('home-button').addEventListener('click', function () {
             window.location.href = '../../inicial.html';
         });
     </script>

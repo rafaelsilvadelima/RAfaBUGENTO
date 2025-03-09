@@ -1276,8 +1276,6 @@
                 height: 40px;
             }
         }
-
-
     </style>
 </head>
 
@@ -1337,10 +1335,10 @@
         </div>
     </div>
 
-        <!-- Botão de modo noturno -->
-        <div class="night-mode-switch" id="night-mode-toggle">
-            <i class="fa fa-moon-o"></i>
-        </div>
+    <!-- Botão de modo noturno -->
+    <div class="night-mode-switch" id="night-mode-toggle">
+        <i class="fa fa-moon-o"></i>
+    </div>
 
     <!-- Botão de home -->
     <div class="home-button" id="home-button">
@@ -1534,28 +1532,28 @@
                 }
             });
 
-       // Alternar modo noturno
-// Verifica se o usuário já escolheu o modo escuro anteriormente
-if (localStorage.getItem('night-mode') === 'enabled') {
-  document.body.classList.add('night-mode');
-  const icon = document.getElementById('night-mode-toggle').querySelector('i');
-  icon.classList.remove('fa-moon-o');
-  icon.classList.add('fa-sun-o');
-}
-  // Adiciona o evento de clique para alternar o modo escuro
-document.getElementById('night-mode-toggle').addEventListener('click', function() {
-  document.body.classList.toggle('night-mode');
-  const icon = this.querySelector('i');
-  if (document.body.classList.contains('night-mode')) {
-      icon.classList.remove('fa-moon-o');
-      icon.classList.add('fa-sun-o');
-      localStorage.setItem('night-mode', 'enabled'); // Salva a preferência no localStorage
-  } else {
-      icon.classList.remove('fa-sun-o');
-      icon.classList.add('fa-moon-o');
-      localStorage.setItem('night-mode', 'disabled'); // Salva a preferência no localStorage
-  }
-});
+            // Alternar modo noturno
+            // Verifica se o usuário já escolheu o modo escuro anteriormente
+            if (localStorage.getItem('night-mode') === 'enabled') {
+                document.body.classList.add('night-mode');
+                const icon = document.getElementById('night-mode-toggle').querySelector('i');
+                icon.classList.remove('fa-moon-o');
+                icon.classList.add('fa-sun-o');
+            }
+            // Adiciona o evento de clique para alternar o modo escuro
+            document.getElementById('night-mode-toggle').addEventListener('click', function () {
+                document.body.classList.toggle('night-mode');
+                const icon = this.querySelector('i');
+                if (document.body.classList.contains('night-mode')) {
+                    icon.classList.remove('fa-moon-o');
+                    icon.classList.add('fa-sun-o');
+                    localStorage.setItem('night-mode', 'enabled'); // Salva a preferência no localStorage
+                } else {
+                    icon.classList.remove('fa-sun-o');
+                    icon.classList.add('fa-moon-o');
+                    localStorage.setItem('night-mode', 'disabled'); // Salva a preferência no localStorage
+                }
+            });
 
             // Botão Home
             homeButton.addEventListener('click', function () {
@@ -1577,75 +1575,75 @@ document.getElementById('night-mode-toggle').addEventListener('click', function(
             generateAlphabetFilter();
             renderBooks();
         });
-         // Script de carregamento corrigido
-document.addEventListener('DOMContentLoaded', function() {
-  // Adicionar classe de carregamento ao body
-  document.body.classList.add('loading');
-  
-  // Coletar todas as imagens do site
-  const allImages = Array.from(document.querySelectorAll('img'));
-  const totalImages = allImages.length;
-  let loadedImages = 0;
-  
-  // Função para atualizar a barra de progresso
-  function updateProgress() {
-    loadedImages++;
-    const progressPercentage = Math.round((loadedImages / totalImages) * 100);
-    
-    // Atualizar a barra de progresso
-    const progressBar = document.getElementById('loading-progress');
-    const progressText = document.getElementById('progress-percentage');
-    
-    if (progressBar && progressText) {
-      progressBar.style.width = progressPercentage + '%';
-      progressText.textContent = progressPercentage + '%';
-    }
-    
-    // Verificar se todas as imagens foram carregadas
-    if (loadedImages >= totalImages) {
-      completeLoading();
-    }
-  }
-  
-  // Verificar carregamento de cada imagem
-  allImages.forEach(img => {
-    // Se a imagem já estiver carregada
-    if (img.complete) {
-      updateProgress();
-    } else {
-      // Aguardar o carregamento da imagem
-      img.addEventListener('load', updateProgress);
-      img.addEventListener('error', updateProgress); // Considerar erros também
-    }
-  });
-  
-  // Garantir que o site será mostrado mesmo que algumas imagens falhem
-  setTimeout(function() {
-    if (loadedImages < totalImages) {
-      completeLoading();
-    }
-  }, 8000); // Tempo máximo de espera: 8 segundos
-  
-  // Função para remover a tela de carregamento
-  function completeLoading() {
-    const loadingScreen = document.getElementById('loading-screen');
-    
-    // Fade out para a tela de carregamento
-    if (loadingScreen) {
-      loadingScreen.style.opacity = '0';
-      
-      // Remover a tela de carregamento após a transição
-      setTimeout(function() {
-        loadingScreen.style.display = 'none';
-        document.body.classList.remove('loading');
-      }, 500);
-    } else {
-      document.body.classList.remove('loading');
-    }
-  }
-  
-  // Removida a referência à variável carousel_images que causava o erro
-})
+        // Script de carregamento corrigido
+        document.addEventListener('DOMContentLoaded', function () {
+            // Adicionar classe de carregamento ao body
+            document.body.classList.add('loading');
+
+            // Coletar todas as imagens do site
+            const allImages = Array.from(document.querySelectorAll('img'));
+            const totalImages = allImages.length;
+            let loadedImages = 0;
+
+            // Função para atualizar a barra de progresso
+            function updateProgress() {
+                loadedImages++;
+                const progressPercentage = Math.round((loadedImages / totalImages) * 100);
+
+                // Atualizar a barra de progresso
+                const progressBar = document.getElementById('loading-progress');
+                const progressText = document.getElementById('progress-percentage');
+
+                if (progressBar && progressText) {
+                    progressBar.style.width = progressPercentage + '%';
+                    progressText.textContent = progressPercentage + '%';
+                }
+
+                // Verificar se todas as imagens foram carregadas
+                if (loadedImages >= totalImages) {
+                    completeLoading();
+                }
+            }
+
+            // Verificar carregamento de cada imagem
+            allImages.forEach(img => {
+                // Se a imagem já estiver carregada
+                if (img.complete) {
+                    updateProgress();
+                } else {
+                    // Aguardar o carregamento da imagem
+                    img.addEventListener('load', updateProgress);
+                    img.addEventListener('error', updateProgress); // Considerar erros também
+                }
+            });
+
+            // Garantir que o site será mostrado mesmo que algumas imagens falhem
+            setTimeout(function () {
+                if (loadedImages < totalImages) {
+                    completeLoading();
+                }
+            }, 8000); // Tempo máximo de espera: 8 segundos
+
+            // Função para remover a tela de carregamento
+            function completeLoading() {
+                const loadingScreen = document.getElementById('loading-screen');
+
+                // Fade out para a tela de carregamento
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+
+                    // Remover a tela de carregamento após a transição
+                    setTimeout(function () {
+                        loadingScreen.style.display = 'none';
+                        document.body.classList.remove('loading');
+                    }, 500);
+                } else {
+                    document.body.classList.remove('loading');
+                }
+            }
+
+            // Removida a referência à variável carousel_images que causava o erro
+        })
     </script>
 
 </html>
