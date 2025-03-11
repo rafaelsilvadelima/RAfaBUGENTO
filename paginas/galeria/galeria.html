@@ -416,6 +416,8 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            min-height: 250px; /* Altura mínima para placeholder */
+            background-color: #f0f0f0; /* Cor do placeholder */
         }
 
         .gallery-item:hover {
@@ -425,10 +427,15 @@
 
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .gallery-item img.loaded {
+            opacity: 1;
         }
 
         .gallery-item:hover img {
@@ -610,6 +617,7 @@
 
         .night-mode .gallery-item {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background-color: #333;
         }
 
         .night-mode .filter-button {
@@ -800,9 +808,70 @@
         .night-mode .home-button {
             background-color: var(--primary);
         }
+
+        /* Estilos para placeholders e loading */
+        .placeholder {
+            background: linear-gradient(90deg, #f0f0f0 0%, #f8f8f8 50%, #f0f0f0 100%);
+            background-size: 200% 100%;
+            animation: placeholder-wave 1.5s infinite;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+        }
+
+        .night-mode .placeholder {
+            background: linear-gradient(90deg, #333 0%, #3a3a3a 50%, #333 100%);
+            background-size: 200% 100%;
+        }
+
+        @keyframes placeholder-wave {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Estilo para o botão de "Carregar Mais" */
+        .load-more-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .load-more-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .load-more-btn:hover {
+            background-color: #a54747;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAfaBUGENTO - Galeria de Imagens</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Presumindo que seu CSS está em um arquivo externo já criado -->
+</head>
 <body>
     <!-- Tela de carregamento -->
     <div id="loading-screen">
@@ -816,7 +885,7 @@
         </div>
         <div class="loading-text">
             <h2>RA<em>fa</em>BUGENTO</h2>
-            <p>Carregando imagens...</p>
+            <p>Preparando a galeria...</p>
             <div class="progress-container">
                 <div class="progress-bar" id="loading-progress"></div>
             </div>
@@ -826,7 +895,7 @@
 
     <!--NAV-->
     <nav class="flex">
-        <h1 class="medium logo"> RA<em>fa</em>BUGENTO</h1>
+        <h1 class="medium logo">RA<em>fa</em>BUGENTO</h1>
     </nav>
 
     <!-- Container da Galeria -->
@@ -840,42 +909,19 @@
         <!-- Filtros da Galeria -->
         <div class="gallery-filters padding_2x">
             <button class="filter-button active" data-filter="all">Todas</button>
-            <!-- <button class="filter-button" data-filter="natureza">Natureza</button>
+            <button class="filter-button" data-filter="capa">Capas</button>
             <button class="filter-button" data-filter="abstrato">Abstrato</button>
-            <button class="filter-button" data-filter="personagens">Personagens</button> -->
+            <button class="filter-button" data-filter="personagens">Personagens</button>
         </div>
 
         <!-- Grade de Imagens -->
-        <div class="gallery-grid">
-            <!-- Item 1 -->
-            <div class="gallery-item" data-category="natureza">
-                <img src="../../img/banner/004.png" alt="Paisagem Montanhosa"
-                    onerror="this.src='/api/placeholder/600/400'; this.onerror=null;">
-                <div class="gallery-item-caption">
-                    <h3 class="gallery-item-title">Montanhas ao Amanhecer</h3>
-                    <p class="gallery-item-desc">O nascer do sol iluminando os picos das montanhas</p>
-                </div>
-            </div>
+        <div class="gallery-grid" id="gallery-grid">
+            <!-- O conteúdo será carregado via JavaScript -->
+        </div>
 
-            <!-- Item 2 -->
-            <div class="gallery-item" data-category="abstrato">
-                <img src="../../img/banner/004.png" alt="Formas Abstratas"
-                    onerror="this.src='/api/placeholder/600/400'; this.onerror=null;">
-                <div class="gallery-item-caption">
-                    <h3 class="gallery-item-title">Ondas de Cor</h3>
-                    <p class="gallery-item-desc">Composição abstrata explorando movimento e cor</p>
-                </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="gallery-item" data-category="personagens">
-                <img src="../../img/banner/004.png" alt="Personagem Luna"
-                    onerror="this.src='/api/placeholder/600/400'; this.onerror=null;">
-                <div class="gallery-item-caption">
-                    <h3 class="gallery-item-title">Luna</h3>
-                    <p class="gallery-item-desc">A protagonista de "O Silêncio que Nos Une"</p>
-                </div>
-            </div>
+        <!-- Botão "Carregar Mais" -->
+        <div class="load-more-container">
+            <button class="load-more-btn" id="load-more-btn">Carregar Mais</button>
         </div>
     </div>
 
@@ -915,213 +961,299 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Alternar modo noturno
-            if (localStorage.getItem('night-mode') === 'enabled') {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dados da galeria - simulação da fonte de dados
+            const galleryData = [
+                {
+                    id: 1,
+                    src: "img/O Segredo que nos une.png",
+                    alt: "O Segredo que nos une",
+                    title: "O Segredo que nos une",
+                    description: "Capa da obra O Segredo que nos une",
+                    category: "capa"
+                },
+                {
+                    id: 2,
+                    src: "img/bode.png",
+                    alt: "não possui",
+                    title: "O Mago e o Bode",
+                    description: "Em Breve",
+                    category: "abstrato"
+                },
+                // {
+                //     id: 3,
+                //     src: "../../img/banner/004.png",
+                //     alt: "Personagem Luna",
+                //     title: "Luna",
+                //     description: "A protagonista de 'O Silêncio que Nos Une'",
+                //     category: "personagens"
+                // },
+                // {
+                //     id: 4,
+                //     src: "../../img/banner/004.png",
+                //     alt: "Floresta Mística",
+                //     title: "Floresta Mística",
+                //     description: "Árvores centenárias em um ambiente envolto em névoa",
+                //     category: "natureza"
+                // },
+                // {
+                //     id: 5,
+                //     src: "../../img/banner/004.png",
+                //     alt: "Floresta Mística",
+                //     title: "Floresta Mística",
+                //     description: "Árvores centenárias em um ambiente envolto em névoa",
+                //     category: "natureza"
+                // },
+                // {
+                //     id: 6,
+                //     src: "../../img/banner/004.png",
+                //     alt: "Floresta Mística",
+                //     title: "Floresta Mística",
+                //     description: "Árvores centenárias em um ambiente envolto em névoa",
+                //     category: "natureza"
+                // },
+                // {
+                //     id: 7,
+                //     src: "../../img/banner/004.png",
+                //     alt: "Floresta Mística",
+                //     title: "Floresta Mística",
+                //     description: "Árvores centenárias em um ambiente envolto em névoa",
+                //     category: "natureza"
+                // },
+                // {
+                //     id: 8,
+                //     src: "../../img/banner/004.png",
+                //     alt: "Floresta Mística",
+                //     title: "Floresta Mística",
+                //     description: "Árvores centenárias em um ambiente envolto em névoa",
+                //     category: "natureza"
+                // },
+                // {
+                //     id: 9,
+                //     src: "../../img/banner/004.png",
+                //     alt: "Floresta Mística",
+                //     title: "Floresta Mística",
+                //     description: "Árvores centenárias em um ambiente envolto em névoa",
+                //     category: "natureza"
+                // },
+                // {
+                //     id: 10,
+                //     src: "../../img/banner/004.png",
+                //     alt: "Floresta Mística",
+                //     title: "Floresta Mística",
+                //     description: "Árvores centenárias em um ambiente envolto em névoa",
+                //     category: "natureza"
+                // },
+                // {
+                //     id: 11,
+                //     src: "../../img/banner/004.png",
+                //     alt: "Floresta Mística",
+                //     title: "Floresta Mística",
+                //     description: "Árvores centenárias em um ambiente envolto em névoa",
+                //     category: "natureza"
+                // }
+            ];
+
+            // Elementos DOM
+            const loadingScreen = document.getElementById('loading-screen');
+            const loadingProgress = document.getElementById('loading-progress');
+            const progressPercentage = document.getElementById('progress-percentage');
+            const galleryGrid = document.getElementById('gallery-grid');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const galleryModal = document.getElementById('gallery-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalClose = document.getElementById('modal-close');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const nightModeToggle = document.getElementById('night-mode-toggle');
+            const homeButton = document.getElementById('home-button');
+            const filterButtons = document.querySelectorAll('.filter-button');
+            
+            let currentImageIndex = 0;
+            let imagesLoaded = 0;
+            const imagesPerLoad = 4;
+            let currentFilter = 'all';
+
+            // Função de carregamento simulado
+            function simulateLoading() {
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.random() * 10;
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                        }, 500);
+                    }
+                    loadingProgress.style.width = `${progress}%`;
+                    progressPercentage.textContent = `${Math.floor(progress)}%`;
+                }, 200);
+            }
+
+            // Função para carregar imagens
+            function loadImages() {
+                const start = imagesLoaded;
+                const end = Math.min(imagesLoaded + imagesPerLoad, galleryData.length);
+                
+                for (let i = start; i < end; i++) {
+                    const item = galleryData[i];
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    galleryItem.dataset.category = item.category;
+                    
+                    galleryItem.innerHTML = `
+                        <div class="placeholder"></div>
+                        <img src="${item.src}" alt="${item.alt}" class="gallery-img" onload="this.previousElementSibling.style.display='none'; this.classList.add('loaded')">
+                        <div class="gallery-item-caption">
+                            <h3 class="gallery-item-title">${item.title}</h3>
+                            <p class="gallery-item-desc">${item.description}</p>
+                        </div>
+                    `;
+                    
+                    galleryItem.addEventListener('click', () => openModal(i));
+                    galleryGrid.appendChild(galleryItem);
+                }
+                
+                imagesLoaded = end;
+                
+                if (imagesLoaded >= galleryData.length) {
+                    loadMoreBtn.style.display = 'none';
+                }
+                
+                applyFilter(currentFilter);
+            }
+
+            // Função para filtrar imagens
+            function applyFilter(filter) {
+                currentFilter = filter;
+                const items = document.querySelectorAll('.gallery-item');
+                
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Atualiza classe ativa nos botões de filtro
+                filterButtons.forEach(btn => {
+                    if (btn.dataset.filter === filter) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+
+            // Função para abrir o modal
+            function openModal(index) {
+                currentImageIndex = index;
+                const item = galleryData[index];
+                modalImage.src = item.src;
+                modalTitle.textContent = item.title;
+                modalDesc.textContent = item.description;
+                galleryModal.style.display = 'flex';
+                
+                // Ajusta botões de navegação
+                updateNavigationButtons();
+            }
+
+            // Atualiza os botões de navegação do modal
+            function updateNavigationButtons() {
+                // Esta função poderia ser expandida para desativar botões
+                // no início ou fim da galeria, mas por agora temos navegação circular
+            }
+
+            // Função para fechar o modal
+            function closeModal() {
+                galleryModal.style.display = 'none';
+            }
+
+            // Função para mostrar imagem anterior
+            function showPrevImage() {
+                currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length;
+                openModal(currentImageIndex);
+            }
+
+            // Função para mostrar próxima imagem
+            function showNextImage() {
+                currentImageIndex = (currentImageIndex + 1) % galleryData.length;
+                openModal(currentImageIndex);
+            }
+
+            // Função para alternar modo noturno
+            function toggleNightMode() {
+                document.body.classList.toggle('night-mode');
+                // Salva preferência no localStorage
+                const isNightMode = document.body.classList.contains('night-mode');
+                localStorage.setItem('nightMode', isNightMode);
+                
+                // Alterna o ícone
+                const icon = nightModeToggle.querySelector('i');
+                if (isNightMode) {
+                    icon.classList.remove('fa-moon-o');
+                    icon.classList.add('fa-sun-o');
+                } else {
+                    icon.classList.remove('fa-sun-o');
+                    icon.classList.add('fa-moon-o');
+                }
+            }
+
+            // Configura eventos de clique
+            loadMoreBtn.addEventListener('click', loadImages);
+            modalClose.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', showPrevImage);
+            nextBtn.addEventListener('click', showNextImage);
+            nightModeToggle.addEventListener('click', toggleNightMode);
+            homeButton.addEventListener('click', () => window.location.href = '/');
+            
+            // Configurar eventos de filtro
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    applyFilter(button.dataset.filter);
+                });
+            });
+
+            // Fechar modal ao clicar fora da imagem
+            galleryModal.addEventListener('click', function(event) {
+                if (event.target === galleryModal) {
+                    closeModal();
+                }
+            });
+
+            // Suporte a teclas para navegação no modal
+            document.addEventListener('keydown', function(event) {
+                if (galleryModal.style.display === 'flex') {
+                    if (event.key === 'Escape') {
+                        closeModal();
+                    } else if (event.key === 'ArrowLeft') {
+                        showPrevImage();
+                    } else if (event.key === 'ArrowRight') {
+                        showNextImage();
+                    }
+                }
+            });
+
+            // Verificar preferência de modo noturno salva
+            if (localStorage.getItem('nightMode') === 'true') {
                 document.body.classList.add('night-mode');
-                const icon = document.getElementById('night-mode-toggle').querySelector('i');
+                const icon = nightModeToggle.querySelector('i');
                 icon.classList.remove('fa-moon-o');
                 icon.classList.add('fa-sun-o');
             }
 
-            document.getElementById('night-mode-toggle').addEventListener('click', function () {
-                document.body.classList.toggle('night-mode');
-                const icon = this.querySelector('i');
-                if (document.body.classList.contains('night-mode')) {
-                    icon.classList.remove('fa-moon-o');
-                    icon.classList.add('fa-sun-o');
-                    localStorage.setItem('night-mode', 'enabled');
-                } else {
-                    icon.classList.remove('fa-sun-o');
-                    icon.classList.add('fa-moon-o');
-                    localStorage.setItem('night-mode', 'disabled');
-                }
-            });
-
-            // Bloqueio do botão direito do mouse
-            document.addEventListener('contextmenu', function (event) {
-                event.preventDefault();
-            }, false);
-
-            // Impedir arrastar imagens
-            const imgs = document.querySelectorAll('img');
-            imgs.forEach(img => {
-                img.addEventListener('dragstart', function (event) {
-                    event.preventDefault();
-                }, false);
-            });
-
-            // Script de carregamento
-            document.body.classList.add('loading');
-
-            const allImages = Array.from(document.querySelectorAll('img'));
-            const totalImages = allImages.length;
-            let loadedImages = 0;
-            let hasCompleted = false;
-
-            function updateProgress() {
-                if (hasCompleted) return;
-
-                loadedImages++;
-                const progressPercentage = Math.round((loadedImages / totalImages) * 100);
-
-                const progressBar = document.getElementById('loading-progress');
-                const progressText = document.getElementById('progress-percentage');
-
-                if (progressBar && progressText) {
-                    progressBar.style.width = progressPercentage + '%';
-                    progressText.textContent = progressPercentage + '%';
-                }
-
-                if (loadedImages >= totalImages) {
-                    completeLoading();
-                }
-            }
-
-            function completeLoading() {
-                if (hasCompleted) return;
-                hasCompleted = true;
-
-                const loadingScreen = document.getElementById('loading-screen');
-
-                if (loadingScreen) {
-                    loadingScreen.style.opacity = '0';
-
-                    setTimeout(function () {
-                        loadingScreen.style.display = 'none';
-                        document.body.classList.remove('loading');
-                    }, 500);
-                } else {
-                    document.body.classList.remove('loading');
-                }
-            }
-
-            allImages.forEach(img => {
-                if (img.complete) {
-                    updateProgress();
-                } else {
-                    img.addEventListener('load', updateProgress);
-                    img.addEventListener('error', updateProgress);
-                }
-            });
-
-            // Fallback para garantir que a página carregue mesmo se houver problemas com imagens
-            setTimeout(completeLoading, 8000);
-
-            // Adicionar evento de clique ao botão de home
-            document.getElementById('home-button').addEventListener('click', function () {
-                window.location.href = '../../inicial.html';
-            });
-
-            // Funcionalidade dos filtros da galeria
-            document.querySelectorAll('.filter-button').forEach(button => {
-                button.addEventListener('click', function () {
-                    const filter = this.getAttribute('data-filter');
-
-                    // Atualizar classe ativa
-                    document.querySelectorAll('.filter-button').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    this.classList.add('active');
-
-                    // Filtrar imagens
-                    document.querySelectorAll('.gallery-item').forEach(item => {
-                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // Funcionalidade do modal da galeria
-            const modal = document.getElementById('gallery-modal');
-            const modalImg = document.getElementById('modal-image');
-            const modalTitle = document.getElementById('modal-title');
-            const modalDesc = document.getElementById('modal-desc');
-            const closeBtn = document.getElementById('modal-close');
-            const nextBtn = document.getElementById('next-btn');
-            const prevBtn = document.getElementById('prev-btn');
-
-            let currentIndex = 0;
-            const galleryItems = document.querySelectorAll('.gallery-item');
-
-            // Abrir modal ao clicar em uma imagem
-            galleryItems.forEach((item, index) => {
-                item.addEventListener('click', function () {
-                    currentIndex = index;
-                    const img = this.querySelector('img');
-                    const title = this.querySelector('.gallery-item-title');
-                    const desc = this.querySelector('.gallery-item-desc');
-
-                    modalImg.src = img.src;
-                    modalTitle.textContent = title.textContent;
-                    modalDesc.textContent = desc.textContent;
-
-                    modal.style.display = 'flex';
-                    document.body.style.overflow = 'hidden'; // Impedir rolagem da página
-                });
-            });
-
-            // Fechar modal
-            closeBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', function (e) {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            function closeModal() {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Reativar rolagem da página
-            }
-
-            // Tecla ESC fecha o modal
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && modal.style.display === 'flex') {
-                    closeModal();
-                }
-            });
-
-            // Navegar para próxima imagem
-            nextBtn.addEventListener('click', function () {
-                currentIndex = (currentIndex + 1) % galleryItems.length;
-                updateModal();
-            });
-
-            // Navegar para imagem anterior
-            prevBtn.addEventListener('click', function () {
-                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-                updateModal();
-            });
-
-            // Teclas de seta para navegação
-            document.addEventListener('keydown', function (e) {
-                if (modal.style.display !== 'flex') return;
-
-                if (e.key === 'ArrowRight') {
-                    currentIndex = (currentIndex + 1) % galleryItems.length;
-                    updateModal();
-                } else if (e.key === 'ArrowLeft') {
-                    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-                    updateModal();
-                }
-            });
-
-            // Atualizar conteúdo do modal
-            function updateModal() {
-                const currentItem = galleryItems[currentIndex];
-                const img = currentItem.querySelector('img');
-                const title = currentItem.querySelector('.gallery-item-title');
-                const desc = currentItem.querySelector('.gallery-item-desc');
-
-                modalImg.src = img.src;
-                modalTitle.textContent = title.textContent;
-                modalDesc.textContent = desc.textContent;
-            }
+            // Iniciar carregamento
+            simulateLoading();
+            
+            // Carregamento inicial de imagens
+            loadImages();
         });
     </script>
 </body>
+</html>
 
 </html>
