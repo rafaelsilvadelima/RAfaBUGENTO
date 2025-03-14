@@ -910,7 +910,7 @@
         <div class="gallery-filters padding_2x">
             <button class="filter-button active" data-filter="all">Todas</button>
             <button class="filter-button" data-filter="capa">Capas</button>
-            <button class="filter-button" data-filter="abstrato">Abstrato</button>
+            <button class="filter-button" data-filter="outros">Outros</button>
             <button class="filter-button" data-filter="personagens">Personagens</button>
         </div>
 
@@ -964,6 +964,111 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Dados da galeria - simulação da fonte de dados
             const galleryData = [
+
+                {
+                    id: 2,
+                    src: "img/bode.png",
+                    alt: "não possui",
+                    title: "O Mago e o Bode",
+                    description: "Em Breve",
+                    category: "abstrato"
+                },
+                {
+                    id: 3,
+                    src: "img/cogumelo.png",
+                    alt: "não possui",
+                    title: "Valentão néh?",
+                    description: "Em breve",
+                    category: "outros"
+                },
+                {
+                    id: 4,
+                    src: "img/mage ing.png",
+                    alt: "Floresta Mística",
+                    title: "Floresta Mística",
+                    description: "Árvores centenárias em um ambiente envolto em névoa",
+                    category: "outros"
+                },
+                {
+                    id: 5,
+                    src: "img/kraken escuro.png",
+                    alt: "Escuridão",
+                    title: "Escuridão",
+                    description: "Em breve",
+                    category: "outros"
+                },
+                {
+                    id: 6,
+                    src: "img/Kraken no mar.png",
+                    alt: "Kraken",
+                    title: "Kraken",
+                    description: "Em breve",
+                    category: "personagens"
+                },
+                {
+                    id: 7,
+                    src: "img/team.png",
+                    alt: "olha, fogo",
+                    title: "Olha, fogo!",
+                    description: "Em breve",
+                    category: "outros"
+                },
+                {
+                    id: 9,
+                    src: "img/sonic.png",
+                    alt: "sonicbugento",
+                    title: "Sonic???",
+                    description: "Em breve",
+                    category: "outros"
+                },
+                {
+                    id: 10,
+                    src: "img/mage create.png",
+                    alt: "mute mage",
+                    title: "Mute Mage",
+                    description: "Em breve",
+                    category: "personagens"
+                },
+                {
+                    id: 11,
+                    src: "img/mage body.png",
+                    alt: "mage body",
+                    title: "Mage Pyro",
+                    description: "Em breve",
+                    category: "personagens"
+                },
+                {
+                    id: 12,
+                    src: "img/torre.png",
+                    alt: "torre",
+                    title: "torre",
+                    description: "Em breve",
+                    category: "outros"
+                },
+                {
+                    id: 14,
+                    src: "img/skecth mage.png",
+                    alt: "skecth mage",
+                    title: "Mago mais rápido do Oeste",
+                    description: "Em breve",
+                    category: "outros"
+                },
+                {
+                    id: 15,
+                    src: "img/chapado.png",
+                    alt: "cogumelos?",
+                    title: "Que cogumelo era esse?",
+                    description: "Em breve",
+                    category: "outros"
+                },
+                {
+                    id: 16,
+                    src: "img/Ninja.png",
+                    alt: "Ninja",
+                    title: "Ninja",
+                    description: "Em breve",
+                    category: "outros"
+                },
                 {
                     id: 1,
                     src: "img/O Segredo que nos une.png",
@@ -973,85 +1078,29 @@
                     category: "capa"
                 },
                 {
-                    id: 2,
-                    src: "img/bode.png",
-                    alt: "não possui",
-                    title: "O Mago e o Bode",
-                    description: "Em Breve",
-                    category: "abstrato"
+                    id: 13,
+                    src: "img/ff.png",
+                    alt: "FFV",
+                    title: "FFV Tributo",
+                    description: "Em breve",
+                    category: "outros"
                 },
-                // {
-                //     id: 3,
-                //     src: "../../img/banner/004.png",
-                //     alt: "Personagem Luna",
-                //     title: "Luna",
-                //     description: "A protagonista de 'O Silêncio que Nos Une'",
-                //     category: "personagens"
-                // },
-                // {
-                //     id: 4,
-                //     src: "../../img/banner/004.png",
-                //     alt: "Floresta Mística",
-                //     title: "Floresta Mística",
-                //     description: "Árvores centenárias em um ambiente envolto em névoa",
-                //     category: "natureza"
-                // },
-                // {
-                //     id: 5,
-                //     src: "../../img/banner/004.png",
-                //     alt: "Floresta Mística",
-                //     title: "Floresta Mística",
-                //     description: "Árvores centenárias em um ambiente envolto em névoa",
-                //     category: "natureza"
-                // },
-                // {
-                //     id: 6,
-                //     src: "../../img/banner/004.png",
-                //     alt: "Floresta Mística",
-                //     title: "Floresta Mística",
-                //     description: "Árvores centenárias em um ambiente envolto em névoa",
-                //     category: "natureza"
-                // },
-                // {
-                //     id: 7,
-                //     src: "../../img/banner/004.png",
-                //     alt: "Floresta Mística",
-                //     title: "Floresta Mística",
-                //     description: "Árvores centenárias em um ambiente envolto em névoa",
-                //     category: "natureza"
-                // },
-                // {
-                //     id: 8,
-                //     src: "../../img/banner/004.png",
-                //     alt: "Floresta Mística",
-                //     title: "Floresta Mística",
-                //     description: "Árvores centenárias em um ambiente envolto em névoa",
-                //     category: "natureza"
-                // },
-                // {
-                //     id: 9,
-                //     src: "../../img/banner/004.png",
-                //     alt: "Floresta Mística",
-                //     title: "Floresta Mística",
-                //     description: "Árvores centenárias em um ambiente envolto em névoa",
-                //     category: "natureza"
-                // },
-                // {
-                //     id: 10,
-                //     src: "../../img/banner/004.png",
-                //     alt: "Floresta Mística",
-                //     title: "Floresta Mística",
-                //     description: "Árvores centenárias em um ambiente envolto em névoa",
-                //     category: "natureza"
-                // },
-                // {
-                //     id: 11,
-                //     src: "../../img/banner/004.png",
-                //     alt: "Floresta Mística",
-                //     title: "Floresta Mística",
-                //     description: "Árvores centenárias em um ambiente envolto em névoa",
-                //     category: "natureza"
-                // }
+                {
+                    id: 8,
+                    src: "img/beholder.jpg",
+                    alt: "beholder",
+                    title: "Beholder",
+                    description: "Árvores centenárias em um ambiente envolto em névoa",
+                    category: "natureza"
+                },
+                {
+                    id: 17,
+                    src: "img/logo.png",
+                    alt: "logo",
+                    title: "Logo",
+                    description: "Em breve",
+                    category: "outros"
+                },
             ];
 
             // Elementos DOM
