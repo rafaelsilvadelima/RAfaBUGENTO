@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAfaBUGENTO - Índice de Capítulos</title>
+    <title>RAfaBUGENTO - Leitura de Livro</title>
 
     <!--FONT AWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -361,8 +361,8 @@
             color: var(--lite);
         }
 
-        /* Estilos para página de índice de capítulos */
-        .chapters-container {
+        /* Estilos para página de leitura */
+        .book-container {
             max-width: 900px;
             margin: 120px auto 50px;
             background-color: var(--white);
@@ -407,57 +407,33 @@
             opacity: 0.7;
         }
 
-        .chapters-list {
+        .book-content {
             padding: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
-        .chapter-item {
-            padding: 1.2rem;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .book-chapter {
+            margin-bottom: 2rem;
         }
 
-        .chapter-item:hover {
-            background-color: #f9f9f9;
-            transform: translateX(5px);
-        }
-
-        .chapter-item a {
-            color: var(--dark);
-            font-weight: 500;
-            display: block;
-            width: 100%;
-        }
-
-        .chapter-item .chapter-number {
+        .chapter-title {
+            margin-bottom: 1.5rem;
             color: var(--primary);
-            font-weight: 700;
-            margin-right: 15px;
-            font-size: 0.9rem;
+            font-size: 1.6rem;
         }
 
-        .chapter-item .chapter-date {
-            color: #999;
-            font-size: 0.85rem;
-            text-align: right;
-            min-width: 100px;
+        .chapter-text p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            text-align: justify;
         }
 
-        .chapter-info {
+        .navigation-controls {
             display: flex;
-            align-items: center;
-            flex: 1;
-        }
-
-        .navigation-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid #eee;
         }
 
         .nav-button {
@@ -468,11 +444,48 @@
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            display: inline-block;
         }
 
         .nav-button:hover {
             background-color: #a44747;
+        }
+
+        .nav-button.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Seletor de capítulos */
+        .chapter-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .selector-label {
+            font-weight: 500;
+            color: #777;
+        }
+
+        .chapter-dropdown {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            font-family: var(--default_font);
+        }
+
+        /* Barra de progresso de leitura */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 5px;
+            background-color: var(--primary);
+            z-index: 10;
+            transition: width 0.2s;
         }
 
         /* Modo noturno */
@@ -498,7 +511,7 @@
             color: #e0e0e0;
         }
 
-        .night-mode .chapters-container {
+        .night-mode .book-container {
             background-color: #2a2a2a;
         }
 
@@ -506,22 +519,57 @@
             background-color: #222;
         }
 
-        .night-mode .chapter-item {
-            border-bottom-color: #333;
-        }
-
-        .night-mode .chapter-item:hover {
-            background-color: #333;
-        }
-
-        .night-mode .chapter-item a {
+        .night-mode .book-content {
             color: #ddd;
         }
 
-        .night-mode .chapter-item .chapter-date {
-            color: #777;
+        .night-mode .chapter-text p {
+            opacity: 0.85;
         }
 
+        /* Bloqueio de tela grande */
+        @media (min-width: 1000px) {
+
+            .bloqueio,
+            .textobloqueio {
+                display: none;
+            }
+        }
+
+        @media (max-width: 999px) {
+
+            .bloqueio,
+            .textobloqueio {
+                display: none;
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .book-container {
+                margin: 100px 15px 30px;
+            }
+
+            .book-cover {
+                max-width: 140px;
+            }
+
+            .book-title {
+                font-size: 1.6rem;
+            }
+
+            .book-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .book-content {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Adicione este código ao seu arquivo inicial.css */
         /* Loading Screen */
         #loading-screen {
             position: fixed;
@@ -703,7 +751,193 @@
 </head>
 
 <body>
-    <!-- Tela de carregamento -->
+    <!-- Barra de progresso de leitura -->
+    <div class="reading-progress" id="reading-progress"></div>
+
+    <!--NAV-->
+    <nav class="flex">
+        <h1 class="medium logo"> RA<em>fa</em>BUGENTO</h1>
+        <!-- <ul class="flex links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#" class="active">Livros</a></li>
+        </ul> -->
+    </nav>
+
+    <!-- Container do Livro -->
+    <div class="book-container">
+        <div class="book-header">
+            <img src="004.png" alt="Capa do Livro" class="book-cover">
+            <h1 class="book-title">O Silêncio que Nos Une</h1>
+            <!-- <div class="book-author">por Rafael <em>"BUGENTO"</em> Silva de Lima</div> -->
+            <div class="book-meta">
+                <span>Capítulo 2</span>
+                <span>Publicado: Março 2025</span>
+            </div>
+        </div>
+
+        <div class="book-content">
+            <div class="book-chapter">
+                <h2 class="chapter-title">Capítulo 2: <em>Boa Noite, Bicho-Papão </em></h2>
+                <div class="chapter-text">
+                    <p>Luna acordou com o coração acelerado, ainda sentindo o calor do sonho que a envolvera. Em sua
+                        mente, a irmã estava ali, deitada ao seu lado, rindo de uma piada sem graça que só as duas
+                        entendiam. Era tão real que, por um momento, Luna esqueceu. Esqueceu que a cama ao lado estava
+                        vazia. Esqueceu que o riso da irmã era apenas um eco na memória. Quando abriu os olhos e viu o
+                        quarto silencioso, a dor voltou, mais forte do que nunca.</p>
+
+                    <p>Ela se sentou na cama, olhando para o vazio ao seu redor. O quarto era pequeno, mas parecia
+                        enorme sem a presença da irmã. As paredes, antes cobertas por pôsteres e fotos, agora estavam
+                        quase nuas, exceto por algumas lembranças que ela não tinha coragem de tirar. Uma delas era uma
+                        foto das duas em um parque de diversões, segurando algodão-doce e sorrindo como se o mundo fosse
+                        perfeito. Luna desviou o olhar.</p>
+
+                    <p>"Foi real?", ela sussurrou para si mesma, lembrando da voz que ouvira na noite anterior. "Ou eu
+                        estou ficando louca?"</p>
+
+                    <p>Do outro lado da cidade, Kai também acordou com a mente confusa. Ele passara a noite inteira
+                        revirando na cama, tentando entender o que acontecera. A voz da garota — Luna — parecia tão
+                        real, mas como era possível? Ele olhou para baixo da cama, como se esperasse encontrar alguma
+                        resposta no escuro. Nada.</p>
+
+                    <p>Seu quarto era um reflexo de sua mente: bagunçado, com roupas espalhadas pelo chão e livros
+                        empilhados em um canto. A única coisa organizada era sua coleção de jogos de tabuleiro, que ele
+                        nunca mais usara desde que parou de sair de casa. Ele se levantou e caminhou até a janela,
+                        puxando a cortina para deixar entrar um pouco de luz. O sol já estava alto, mas ele não se
+                        sentia pronto para enfrentar o dia.</p>
+
+                    <p>"Foi só um sonho", ele murmurou, tentando convencer a si mesmo. "Não faz sentido."</p>
+
+                    <p>O dia passou devagar para os dois. Luna tentou se distrair com séries e livros, mas a voz de Kai
+                        ecoava em sua mente. Ela chegou a se ajoelhar ao lado da cama algumas vezes, sussurrando "Oi?"
+                        na esperança de ouvir uma resposta. Nada.</p>
+
+                    <p>Kai, por sua vez, passou horas olhando para o teto, imaginando cenários absurdos que pudessem
+                        explicar o que acontecera. Ele até pesquisou no celular sobre "vozes que vêm de baixo da cama",
+                        mas os resultados foram tão assustadores que ele desistiu rapidamente.</p>
+
+                    <p>Quando a noite chegou, ambos estavam exaustos, mas algo os impedia de dormir. Era como se o
+                        silêncio do quarto fosse insuportável, como se faltasse algo — ou alguém.</p>
+
+                    <p>Luna deitou-se na cama, olhando para o teto. O quarto estava escuro, exceto pela luz fraca da lua
+                        que entrava pela janela. Ela suspirou, sentindo-se ridícula por ainda esperar ouvir aquela voz.
+                        "Boa noite, bicho-papão", ela sussurrou, meio que brincando, meio que esperando.</p>
+
+                    <p>Do outro lado, Kai estava debaixo da cama novamente. Ele não sabia por que tinha voltado para lá,
+                        mas algo o puxava para o escuro. Foi então que ele ouviu.</p>
+
+                    <p>"Boa noite, bicho-papão."</p>
+
+                    <p>A voz era suave, quase um sussurro, mas ele a reconheceu imediatamente. Seu coração acelerou, e
+                        ele quase bateu a cabeça ao se levantar rapidamente. "Luna?", ele chamou, sua voz tremendo.</p>
+
+                    <p>Luna sentou-se na cama, os olhos arregalados. "Kai?", ela respondeu, quase sem acreditar.</p>
+
+                    <p>"Eu... eu ouvi você", ele disse, rindo de nervoso. "Você me chamou de bicho-papão?"</p>
+
+                    <p>Luna sentiu o rosto queimar de vergonha. "Eu... foi sem querer", ela gaguejou, cobrindo o rosto
+                        com as mãos. "É que... você fica debaixo da cama, então... eu só pensei... ah, esquece!"</p>
+
+                    <p>Kai riu, um som genuíno que ele não fazia há muito tempo. "Tá bom, tá bom. Pode me chamar de
+                        bicho-papão se quiser. Ou só de 'papão', se for mais fácil."</p>
+
+                    <p>Luna soltou uma risada baixa, aliviada por ele não ter levado a mal. "Tá bom, papão. Boa noite."
+                    </p>
+
+                    <p>"Boa noite, Luna", ele respondeu, ainda rindo.</p>
+
+                    <p>Os dois ficaram em silêncio por um momento, mas desta vez, o silêncio era confortável. Era como
+                        se o mundo lá fora não importasse mais. Eles estavam conectados, mesmo que não entendessem como
+                        ou por quê.</p>
+
+                    <p>"Você... você quer conversar?", Kai perguntou, hesitante.</p>
+
+                    <p>Luna deitou-se no chão, encostando a cabeça na cama. "Sim", ela respondeu, sua voz suave.
+                        "Conte-me sobre você."</p>
+
+                    <p>Kai hesitou por um momento, mas algo na voz dela o fez continuar. "Eu... eu não saio do quarto há
+                        um ano", ele admitiu, sua voz quase um sussurro. "No começo, eu ria das brincadeiras. Achava
+                        que, se eu risse junto, eles parariam. Mas aí... começou a doer. E eu sentia vergonha de dizer
+                        que aquilo me machucava. Então, eu só... parei de sair. É mais fácil ficar aqui."</p>
+
+                    <p>Luna ficou em silêncio por um momento, processando as palavras dele. "Eu entendo", ela finalmente
+                        disse. "Eu perdi minha irmã. Ela era... tudo para mim. Sempre pensei que teríamos mais tempo
+                        juntas. Nunca imaginei que poderíamos nos separar."</p>
+
+                    <p>Kai sentiu um nó na garganta. "Eu sinto muito", ele disse, sua voz suave. "Ela... como ela era?"
+                    </p>
+
+                    <p>Luna sorriu, mesmo sabendo que ele não podia vê-la. "Ela era incrível. Sempre sabia o que dizer
+                        para me animar. Ela adorava as estrelas, sabia? Passávamos horas olhando para o céu, imaginando
+                        histórias sobre as constelações. Ela dizia que um dia iríamos viajar pelo mundo, ver todos os
+                        lugares que apareciam nos livros. Mas... aí ela se foi."</p>
+
+                    <p>Kai ficou em silêncio por um momento, tentando encontrar as palavras certas. "Eu... eu não sei o
+                        que dizer", ele admitiu. "Mas... ela parece ter sido alguém incrível."</p>
+
+                    <p>Luna sentiu uma lágrima escorrer pelo rosto, mas desta vez, não era de tristeza. "Ela era", ela
+                        sussurrou. "Obrigada por estar aqui."</p>
+
+                    <p>Kai sorriu, mesmo sabendo que ela não podia vê-lo. "Eu também", ele disse. "Eu... eu não sei como
+                        isso está acontecendo, mas... estou feliz por ter te ouvido."</p>
+
+                    <p>E assim, começaram a falar. Sobre seus medos, seus sonhos, e sobre como o mundo parecia menos
+                        assustador quando havia alguém para compartilhá-lo. A noite passou devagar, mas para eles, cada
+                        minuto era precioso.</p>
+
+                    <p>Quando o cansaço finalmente os venceu, Luna sussurrou: "Boa noite, papão."</p>
+
+                    <p>"Boa noite, Luna", ele respondeu, sentindo uma paz que não conhecia há muito tempo.</p>
+
+                    <p>E, pela primeira vez em muito tempo, ambos adormeceram com um sorriso no rosto. O dia deles não
+                        tinha começado ao amanhecer, mas naquela madrugada, quando uma conexão inexplicável os uniu.</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-controls">
+            <button class="nav-button disabled"><a href="../../paginas/leitura/leitura001.html">Capítulo
+                    Anterior</a></button>
+
+            <!-- <div class="chapter-selector">
+                <span class="selector-label">Ir para:</span>
+                <select class="chapter-dropdown" id="chapter-select">
+                    <option value="1" selected>Prólogo: <em>O Silêncio que Nos Une </em></option>
+                    <option value="2">Capítulo 2: A Livraria Penumbra</option>
+                    <option value="3">Capítulo 3: O Livro Sem Título</option>
+                    <option value="4">Capítulo 4: Guardiões da Fronteira</option>
+                </select>
+            </div> -->
+
+            <button class="nav-button"> <a href="../../em breve/embreve.html">22/03/2025</a> </button>
+        </div>
+    </div>
+
+    <!-- Botão de modo noturno -->
+    <div class="night-mode-switch" id="night-mode-toggle">
+        <i class="fa fa-moon-o"></i>
+    </div>
+
+    <!-- Tela de bloqueio para dispositivos grandes -->
+    <section class="bloqueio">
+        <h1 class="medium logo title textobloqueio">Vixi! <em> :(</em> <br> <br> Essa página está configurada para abrir
+            em telas menores em celulares.</h1>
+    </section>
+    <!--FOOTER-->
+    <footer class="flex padding_2x">
+        <h1 class="medium logo title">RA<em>fa</em>BUGENTO.</h1>
+        <!-- <ul class="flex links padding_2x">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Quem Sou Eu</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+        </ul> -->
+        <hr>
+        </hr>
+        <aside class="sub_footer flex">
+            <p>© 2025 - Todos os direitos reservados</p>
+        </aside>
+    </footer>
+    <!-- Adicione este código logo após a abertura da tag <body> -->
     <div id="loading-screen">
         <div class="book">
             <div class="book-page"></div>
@@ -722,94 +956,21 @@
             <div class="progress-percentage" id="progress-percentage">0%</div>
         </div>
     </div>
-
-    <!--NAV-->
-    <nav class="flex">
-        <h1 class="medium logo"> RA<em>fa</em>BUGENTO</h1>
-        <!-- <ul class="flex links">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="#" class="active">Livros</a></li>
-        </ul> -->
-    </nav>
-
-    <!-- Container de Capítulos -->
-    <div class="chapters-container">
-        <div class="book-header">
-            <img src="004.png" alt="Capa do Livro" class="book-cover"
-                onerror="this.src='placeholder.png'; this.onerror=null;">
-            <h1 class="book-title">O Silêncio que Nos Une</h1>
-            <div class="book-author">por Rafael <em>"BUGENTO"</em> Silva de Lima</div>
-            <div class="book-meta">
-                <span>Uma história sobre conexão</span>
-                <span>Publicado: Março 2025</span>
-            </div>
-
-            <div class="navigation-buttons">
-                <a href="leitura000.html" class="nav-button">Primeiro Capítulo</a>
-                <a href="leitura002.html" class="nav-button">Capítulo Mais Recente</a>
-            </div>
-        </div>
-
-        <div class="chapters-list">
-            <a href="leitura000.html" class="chapter-item-link">
-                <div class="chapter-item">
-                    <div class="chapter-info">
-                        <span class="chapter-number">Cap. 0</span>
-                        <span class="chapter-title">Prólogo: O Silêncio que Nos Une</span>
-                    </div>
-                    <span class="chapter-date">Mar 01</span>
-                </div>
-            </a>
-
-            <a href="leitura001.html" class="chapter-item-link">
-                <div class="chapter-item">
-                    <div class="chapter-info">
-                        <span class="chapter-number">Cap. 1</span>
-                        <span class="chapter-title">Sussurros Sob a Cama</span>
-                    </div>
-                    <span class="chapter-date">Mar 08</span>
-                </div>
-            </a>
-
-            <a href="leitura002.html" class="chapter-item-link">
-                <div class="chapter-item">
-                    <div class="chapter-info">
-                        <span class="chapter-number">Cap. 2</span>
-                        <span class="chapter-title">Boa Noite, Bicho-Papão</span>
-                    </div>
-                    <span class="chapter-date">Mar 15</span>
-                </div>
-            </a>
-
-
-        </div>
+    <!-- Botão de home -->
+    <div class="home-button" id="home-button">
+        <i class="fa fa-home"></i>
     </div>
-
-    <!-- Botão de modo noturno -->
-    <div class="night-mode-switch" id="night-mode-toggle">
-        <i class="fa fa-moon-o"></i>
-    </div>
-
-    <!--FOOTER-->
-    <footer class="flex padding_2x">
-        <h1 class="medium logo title">RA<em>fa</em>BUGENTO.</h1>
-        <!-- <ul class="flex links padding_2x">
-            <li><a href="../../inicial.html">Inicio</a></li>
-            <li><a href="#">Quem Sou Eu</a></li>
-            <li><a href="#">Política de Privacidade</a></li>
-        </ul> -->
-        <hr>
-        <aside class="sub_footer flex">
-            <p>© 2025 - Todos os direitos reservados</p>
-        </aside>
-        <!-- Botão de home -->
-        <div class="home-button" id="home-button">
-            <i class="fa fa-home"></i>
-        </div>
-    </footer>
-
     <script>
+        // Progresso de leitura
+        window.addEventListener('scroll', function () {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("reading-progress").style.width = scrolled + "%";
+        });
+
         // Alternar modo noturno
+        // Verifica se o usuário já escolheu o modo escuro anteriormente
         if (localStorage.getItem('night-mode') === 'enabled') {
             document.body.classList.add('night-mode');
             const icon = document.getElementById('night-mode-toggle').querySelector('i');
@@ -817,18 +978,24 @@
             icon.classList.add('fa-sun-o');
         }
 
+        // Adiciona o evento de clique para alternar o modo escuro
         document.getElementById('night-mode-toggle').addEventListener('click', function () {
             document.body.classList.toggle('night-mode');
             const icon = this.querySelector('i');
             if (document.body.classList.contains('night-mode')) {
                 icon.classList.remove('fa-moon-o');
                 icon.classList.add('fa-sun-o');
-                localStorage.setItem('night-mode', 'enabled');
+                localStorage.setItem('night-mode', 'enabled'); // Salva a preferência no localStorage
             } else {
                 icon.classList.remove('fa-sun-o');
                 icon.classList.add('fa-moon-o');
-                localStorage.setItem('night-mode', 'disabled');
+                localStorage.setItem('night-mode', 'disabled'); // Salva a preferência no localStorage
             }
+        });
+        // Mudança de capítulo
+        document.getElementById('chapter-select') && document.getElementById('chapter-select').addEventListener('change', function () {
+            const chapter = this.value;
+            alert('Navegando para o Capítulo ' + chapter + ' (Funcionalidade simulada)');
         });
 
         // Bloqueio do botão direito do mouse
@@ -844,21 +1011,22 @@
             }, false);
         });
 
-        // Script de carregamento
+        // Script de carregamento corrigido
         document.addEventListener('DOMContentLoaded', function () {
+            // Adicionar classe de carregamento ao body
             document.body.classList.add('loading');
 
+            // Coletar todas as imagens do site
             const allImages = Array.from(document.querySelectorAll('img'));
             const totalImages = allImages.length;
             let loadedImages = 0;
-            let hasCompleted = false;
 
+            // Função para atualizar a barra de progresso
             function updateProgress() {
-                if (hasCompleted) return;
-
                 loadedImages++;
                 const progressPercentage = Math.round((loadedImages / totalImages) * 100);
 
+                // Atualizar a barra de progresso
                 const progressBar = document.getElementById('loading-progress');
                 const progressText = document.getElementById('progress-percentage');
 
@@ -867,20 +1035,40 @@
                     progressText.textContent = progressPercentage + '%';
                 }
 
+                // Verificar se todas as imagens foram carregadas
                 if (loadedImages >= totalImages) {
                     completeLoading();
                 }
             }
 
-            function completeLoading() {
-                if (hasCompleted) return;
-                hasCompleted = true;
+            // Verificar carregamento de cada imagem
+            allImages.forEach(img => {
+                // Se a imagem já estiver carregada
+                if (img.complete) {
+                    updateProgress();
+                } else {
+                    // Aguardar o carregamento da imagem
+                    img.addEventListener('load', updateProgress);
+                    img.addEventListener('error', updateProgress); // Considerar erros também
+                }
+            });
 
+            // Garantir que o site será mostrado mesmo que algumas imagens falhem
+            setTimeout(function () {
+                if (loadedImages < totalImages) {
+                    completeLoading();
+                }
+            }, 8000); // Tempo máximo de espera: 8 segundos
+
+            // Função para remover a tela de carregamento
+            function completeLoading() {
                 const loadingScreen = document.getElementById('loading-screen');
 
+                // Fade out para a tela de carregamento
                 if (loadingScreen) {
                     loadingScreen.style.opacity = '0';
 
+                    // Remover a tela de carregamento após a transição
                     setTimeout(function () {
                         loadingScreen.style.display = 'none';
                         document.body.classList.remove('loading');
@@ -890,17 +1078,7 @@
                 }
             }
 
-            allImages.forEach(img => {
-                if (img.complete) {
-                    updateProgress();
-                } else {
-                    img.addEventListener('load', updateProgress);
-                    img.addEventListener('error', updateProgress);
-                }
-            });
-
-            // Fallback para garantir que a página carregue mesmo se houver problemas com imagens
-            setTimeout(completeLoading, 8000);
+            // Removida a referência à variável carousel_images que causava o erro
         });
         // Adicionar evento de clique ao botão de home
         document.getElementById('home-button').addEventListener('click', function () {
